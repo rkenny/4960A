@@ -1,0 +1,239 @@
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 10, 'dataset': 'Youshu', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 8039, 'num_bundles': 4771, 'num_items': 32770, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.00436, avg.loss: 0.42066, Time: 203.40352
+EPOCH: 1, avg.l2: 0.00448, avg.loss: 0.32172, Time: 202.43824
+EPOCH: 2, avg.l2: 0.00527, avg.loss: 0.27258, Time: 203.39713
+EPOCH: 3, avg.l2: 0.00601, avg.loss: 0.25584, Time: 203.98803
+EPOCH: 4, avg.l2: 0.00629, avg.loss: 0.25247, Time: 202.25631
+EPOCH: 5, avg.l2: 0.00660, avg.loss: 0.23980, Time: 203.76260
+EPOCH: 6, avg.l2: 0.00709, avg.loss: 0.23213, Time: 207.45820
+EPOCH: 7, avg.l2: 0.00763, avg.loss: 0.22662, Time: 203.32055
+EPOCH: 8, avg.l2: 0.00835, avg.loss: 0.21764, Time: 203.75954
+2023-12-27 15:18:42, Top_10, Val:  recall: 0.175743, ndcg: 0.098394
+2023-12-27 15:18:42, Top_10, Test: recall: 0.175324, ndcg: 0.120135
+2023-12-27 15:18:42, Top_20, Val:  recall: 0.254270, ndcg: 0.120405
+2023-12-27 15:18:42, Top_20, Test: recall: 0.254096, ndcg: 0.143442
+2023-12-27 15:18:42, Top_40, Val:  recall: 0.355537, ndcg: 0.143679
+2023-12-27 15:18:42, Top_40, Test: recall: 0.362294, ndcg: 0.172398
+2023-12-27 15:18:42, Top_80, Val:  recall: 0.466586, ndcg: 0.165104
+2023-12-27 15:18:42, Top_80, Test: recall: 0.474966, ndcg: 0.198367
+2023-12-27 15:18:42, Best in epoch 9, TOP 10: REC_V=0.17574, NDCG_V=0.09839
+2023-12-27 15:18:42, Best in epoch 9, TOP 10: REC_T=0.17532, NDCG_T=0.12014
+2023-12-27 15:18:42, Best in epoch 9, TOP 20: REC_V=0.25427, NDCG_V=0.12040
+2023-12-27 15:18:42, Best in epoch 9, TOP 20: REC_T=0.25410, NDCG_T=0.14344
+2023-12-27 15:18:42, Best in epoch 9, TOP 40: REC_V=0.35554, NDCG_V=0.14368
+2023-12-27 15:18:42, Best in epoch 9, TOP 40: REC_T=0.36229, NDCG_T=0.17240
+2023-12-27 15:18:42, Best in epoch 9, TOP 80: REC_V=0.46659, NDCG_V=0.16510
+2023-12-27 15:18:42, Best in epoch 9, TOP 80: REC_T=0.47497, NDCG_T=0.19837
+[!]2023-12-27 15:18:42, Best in epoch 9, TOP 20: REC_T=0.25410, NDCG_T=0.14344
+EPOCH: 9, avg.l2: 0.00908, avg.loss: 0.20874, Time: 219.52080
+EPOCH: 10, avg.l2: 0.00985, avg.loss: 0.20276, Time: 204.12453
+EPOCH: 11, avg.l2: 0.01064, avg.loss: 0.19692, Time: 203.51527
+EPOCH: 12, avg.l2: 0.01141, avg.loss: 0.18799, Time: 210.76434
+EPOCH: 13, avg.l2: 0.01205, avg.loss: 0.18398, Time: 208.03884
+EPOCH: 14, avg.l2: 0.01269, avg.loss: 0.18910, Time: 205.29994
+EPOCH: 15, avg.l2: 0.01310, avg.loss: 0.18560, Time: 203.24948
+EPOCH: 16, avg.l2: 0.01356, avg.loss: 0.17631, Time: 207.22210
+EPOCH: 17, avg.l2: 0.01399, avg.loss: 0.18043, Time: 212.25533
+EPOCH: 18, avg.l2: 0.01437, avg.loss: 0.17143, Time: 206.40292
+2023-12-27 15:53:26, Top_10, Val:  recall: 0.184336, ndcg: 0.108524
+2023-12-27 15:53:26, Top_10, Test: recall: 0.184719, ndcg: 0.128618
+2023-12-27 15:53:26, Top_20, Val:  recall: 0.263523, ndcg: 0.130797
+2023-12-27 15:53:26, Top_20, Test: recall: 0.263993, ndcg: 0.152061
+2023-12-27 15:53:26, Top_40, Val:  recall: 0.365232, ndcg: 0.154116
+2023-12-27 15:53:26, Top_40, Test: recall: 0.365190, ndcg: 0.179686
+2023-12-27 15:53:26, Top_80, Val:  recall: 0.472974, ndcg: 0.175173
+2023-12-27 15:53:26, Top_80, Test: recall: 0.488926, ndcg: 0.207983
+2023-12-27 15:53:26, Best in epoch 19, TOP 10: REC_V=0.18434, NDCG_V=0.10852
+2023-12-27 15:53:26, Best in epoch 19, TOP 10: REC_T=0.18472, NDCG_T=0.12862
+2023-12-27 15:53:26, Best in epoch 19, TOP 20: REC_V=0.26352, NDCG_V=0.13080
+2023-12-27 15:53:26, Best in epoch 19, TOP 20: REC_T=0.26399, NDCG_T=0.15206
+2023-12-27 15:53:26, Best in epoch 19, TOP 40: REC_V=0.36523, NDCG_V=0.15412
+2023-12-27 15:53:26, Best in epoch 19, TOP 40: REC_T=0.36519, NDCG_T=0.17969
+2023-12-27 15:53:26, Best in epoch 19, TOP 80: REC_V=0.47297, NDCG_V=0.17517
+2023-12-27 15:53:26, Best in epoch 19, TOP 80: REC_T=0.48893, NDCG_T=0.20798
+[!]2023-12-27 15:53:26, Best in epoch 19, TOP 20: REC_T=0.26399, NDCG_T=0.15206
+EPOCH: 19, avg.l2: 0.01481, avg.loss: 0.16851, Time: 220.05419
+EPOCH: 20, avg.l2: 0.01536, avg.loss: 0.16935, Time: 201.64494
+EPOCH: 21, avg.l2: 0.01591, avg.loss: 0.16302, Time: 208.57955
+EPOCH: 22, avg.l2: 0.01640, avg.loss: 0.16390, Time: 210.07463
+EPOCH: 23, avg.l2: 0.01690, avg.loss: 0.15689, Time: 214.69595
+EPOCH: 24, avg.l2: 0.01740, avg.loss: 0.16029, Time: 208.21170
+EPOCH: 25, avg.l2: 0.01791, avg.loss: 0.15905, Time: 210.07806
+EPOCH: 26, avg.l2: 0.01841, avg.loss: 0.15883, Time: 208.61307
+EPOCH: 27, avg.l2: 0.01889, avg.loss: 0.15232, Time: 208.84281
+EPOCH: 28, avg.l2: 0.01937, avg.loss: 0.15025, Time: 208.03567
+2023-12-27 16:28:32, Top_10, Val:  recall: 0.191507, ndcg: 0.112492
+2023-12-27 16:28:32, Top_10, Test: recall: 0.191941, ndcg: 0.133680
+2023-12-27 16:28:32, Top_20, Val:  recall: 0.275357, ndcg: 0.136034
+2023-12-27 16:28:32, Top_20, Test: recall: 0.273529, ndcg: 0.157325
+2023-12-27 16:28:32, Top_40, Val:  recall: 0.376617, ndcg: 0.159683
+2023-12-27 16:28:32, Top_40, Test: recall: 0.374148, ndcg: 0.185064
+2023-12-27 16:28:32, Top_80, Val:  recall: 0.483815, ndcg: 0.180545
+2023-12-27 16:28:32, Top_80, Test: recall: 0.495477, ndcg: 0.212830
+2023-12-27 16:28:32, Best in epoch 29, TOP 10: REC_V=0.19151, NDCG_V=0.11249
+2023-12-27 16:28:32, Best in epoch 29, TOP 10: REC_T=0.19194, NDCG_T=0.13368
+2023-12-27 16:28:32, Best in epoch 29, TOP 20: REC_V=0.27536, NDCG_V=0.13603
+2023-12-27 16:28:32, Best in epoch 29, TOP 20: REC_T=0.27353, NDCG_T=0.15733
+2023-12-27 16:28:32, Best in epoch 29, TOP 40: REC_V=0.37662, NDCG_V=0.15968
+2023-12-27 16:28:32, Best in epoch 29, TOP 40: REC_T=0.37415, NDCG_T=0.18506
+2023-12-27 16:28:32, Best in epoch 29, TOP 80: REC_V=0.48382, NDCG_V=0.18055
+2023-12-27 16:28:32, Best in epoch 29, TOP 80: REC_T=0.49548, NDCG_T=0.21283
+[!]2023-12-27 16:28:32, Best in epoch 29, TOP 20: REC_T=0.27353, NDCG_T=0.15733
+EPOCH: 29, avg.l2: 0.01986, avg.loss: 0.14762, Time: 225.13437
+EPOCH: 30, avg.l2: 0.02028, avg.loss: 0.14418, Time: 209.31134
+EPOCH: 31, avg.l2: 0.02072, avg.loss: 0.14152, Time: 208.75245
+EPOCH: 32, avg.l2: 0.02115, avg.loss: 0.14208, Time: 208.06430
+EPOCH: 33, avg.l2: 0.02158, avg.loss: 0.14419, Time: 204.14865
+EPOCH: 34, avg.l2: 0.02201, avg.loss: 0.14160, Time: 204.33729
+EPOCH: 35, avg.l2: 0.02244, avg.loss: 0.13815, Time: 204.12394
+EPOCH: 36, avg.l2: 0.02290, avg.loss: 0.13899, Time: 207.46271
+EPOCH: 37, avg.l2: 0.02335, avg.loss: 0.13939, Time: 210.30834
+EPOCH: 38, avg.l2: 0.02375, avg.loss: 0.13636, Time: 210.36408
+2023-12-27 17:03:29, Top_10, Val:  recall: 0.191515, ndcg: 0.112512
+2023-12-27 17:03:29, Top_10, Test: recall: 0.194773, ndcg: 0.138055
+2023-12-27 17:03:29, Top_20, Val:  recall: 0.283798, ndcg: 0.138438
+2023-12-27 17:03:29, Top_20, Test: recall: 0.273958, ndcg: 0.160701
+2023-12-27 17:03:29, Top_40, Val:  recall: 0.383891, ndcg: 0.161859
+2023-12-27 17:03:29, Top_40, Test: recall: 0.385847, ndcg: 0.190957
+2023-12-27 17:03:29, Top_80, Val:  recall: 0.493258, ndcg: 0.183140
+2023-12-27 17:03:29, Top_80, Test: recall: 0.503379, ndcg: 0.218356
+2023-12-27 17:03:29, Best in epoch 39, TOP 10: REC_V=0.19152, NDCG_V=0.11251
+2023-12-27 17:03:29, Best in epoch 39, TOP 10: REC_T=0.19477, NDCG_T=0.13805
+2023-12-27 17:03:29, Best in epoch 39, TOP 20: REC_V=0.28380, NDCG_V=0.13844
+2023-12-27 17:03:29, Best in epoch 39, TOP 20: REC_T=0.27396, NDCG_T=0.16070
+2023-12-27 17:03:29, Best in epoch 39, TOP 40: REC_V=0.38389, NDCG_V=0.16186
+2023-12-27 17:03:29, Best in epoch 39, TOP 40: REC_T=0.38585, NDCG_T=0.19096
+2023-12-27 17:03:29, Best in epoch 39, TOP 80: REC_V=0.49326, NDCG_V=0.18314
+2023-12-27 17:03:29, Best in epoch 39, TOP 80: REC_T=0.50338, NDCG_T=0.21836
+[!]2023-12-27 17:03:29, Best in epoch 39, TOP 20: REC_T=0.27396, NDCG_T=0.16070
+EPOCH: 39, avg.l2: 0.02412, avg.loss: 0.13573, Time: 228.05207
+EPOCH: 40, avg.l2: 0.02445, avg.loss: 0.13196, Time: 210.05011
+EPOCH: 41, avg.l2: 0.02484, avg.loss: 0.13075, Time: 210.22556
+EPOCH: 42, avg.l2: 0.02529, avg.loss: 0.13119, Time: 209.66908
+EPOCH: 43, avg.l2: 0.02568, avg.loss: 0.12759, Time: 210.06830
+EPOCH: 44, avg.l2: 0.02609, avg.loss: 0.12619, Time: 208.69008
+EPOCH: 45, avg.l2: 0.02648, avg.loss: 0.12508, Time: 208.96366
+EPOCH: 46, avg.l2: 0.02684, avg.loss: 0.12230, Time: 207.99189
+EPOCH: 47, avg.l2: 0.02720, avg.loss: 0.12359, Time: 210.25264
+EPOCH: 48, avg.l2: 0.02747, avg.loss: 0.12186, Time: 209.73141
+2023-12-27 17:38:42, Top_10, Val:  recall: 0.204107, ndcg: 0.118653
+2023-12-27 17:38:42, Top_10, Test: recall: 0.202170, ndcg: 0.141102
+2023-12-27 17:38:42, Top_20, Val:  recall: 0.294246, ndcg: 0.143850
+2023-12-27 17:38:42, Top_20, Test: recall: 0.277815, ndcg: 0.163319
+2023-12-27 17:38:42, Top_40, Val:  recall: 0.385050, ndcg: 0.165244
+2023-12-27 17:38:42, Top_40, Test: recall: 0.388071, ndcg: 0.193089
+2023-12-27 17:38:42, Top_80, Val:  recall: 0.498396, ndcg: 0.187425
+2023-12-27 17:38:42, Top_80, Test: recall: 0.508193, ndcg: 0.220954
+2023-12-27 17:38:42, Best in epoch 49, TOP 10: REC_V=0.20411, NDCG_V=0.11865
+2023-12-27 17:38:42, Best in epoch 49, TOP 10: REC_T=0.20217, NDCG_T=0.14110
+2023-12-27 17:38:42, Best in epoch 49, TOP 20: REC_V=0.29425, NDCG_V=0.14385
+2023-12-27 17:38:42, Best in epoch 49, TOP 20: REC_T=0.27781, NDCG_T=0.16332
+2023-12-27 17:38:42, Best in epoch 49, TOP 40: REC_V=0.38505, NDCG_V=0.16524
+2023-12-27 17:38:42, Best in epoch 49, TOP 40: REC_T=0.38807, NDCG_T=0.19309
+2023-12-27 17:38:42, Best in epoch 49, TOP 80: REC_V=0.49840, NDCG_V=0.18743
+2023-12-27 17:38:42, Best in epoch 49, TOP 80: REC_T=0.50819, NDCG_T=0.22095
+[!]2023-12-27 17:38:42, Best in epoch 49, TOP 20: REC_T=0.27781, NDCG_T=0.16332
+EPOCH: 49, avg.l2: 0.02775, avg.loss: 0.12230, Time: 225.57330
+EPOCH: 50, avg.l2: 0.02800, avg.loss: 0.12025, Time: 209.46612
+EPOCH: 51, avg.l2: 0.02825, avg.loss: 0.12188, Time: 208.30102
+EPOCH: 52, avg.l2: 0.02853, avg.loss: 0.12344, Time: 207.09108
+EPOCH: 53, avg.l2: 0.02876, avg.loss: 0.12060, Time: 204.43852
+EPOCH: 54, avg.l2: 0.02899, avg.loss: 0.12018, Time: 203.45864
+EPOCH: 55, avg.l2: 0.02927, avg.loss: 0.11679, Time: 203.84628
+EPOCH: 56, avg.l2: 0.02954, avg.loss: 0.11708, Time: 204.57152
+EPOCH: 57, avg.l2: 0.02977, avg.loss: 0.11684, Time: 208.38121
+EPOCH: 58, avg.l2: 0.03003, avg.loss: 0.11492, Time: 208.78906
+2023-12-27 18:13:30, Top_10, Val:  recall: 0.205390, ndcg: 0.120426
+2023-12-27 18:13:30, Top_10, Test: recall: 0.205917, ndcg: 0.145157
+2023-12-27 18:13:30, Top_20, Val:  recall: 0.296405, ndcg: 0.145919
+2023-12-27 18:13:30, Top_20, Test: recall: 0.281627, ndcg: 0.167299
+2023-12-27 18:13:30, Top_40, Val:  recall: 0.389797, ndcg: 0.167821
+2023-12-27 18:13:30, Top_40, Test: recall: 0.389582, ndcg: 0.196390
+2023-12-27 18:13:30, Top_80, Val:  recall: 0.503754, ndcg: 0.190070
+2023-12-27 18:13:30, Top_80, Test: recall: 0.506941, ndcg: 0.223632
+2023-12-27 18:13:30, Best in epoch 59, TOP 10: REC_V=0.20539, NDCG_V=0.12043
+2023-12-27 18:13:30, Best in epoch 59, TOP 10: REC_T=0.20592, NDCG_T=0.14516
+2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_V=0.29641, NDCG_V=0.14592
+2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_T=0.28163, NDCG_T=0.16730
+2023-12-27 18:13:30, Best in epoch 59, TOP 40: REC_V=0.38980, NDCG_V=0.16782
+2023-12-27 18:13:30, Best in epoch 59, TOP 40: REC_T=0.38958, NDCG_T=0.19639
+2023-12-27 18:13:30, Best in epoch 59, TOP 80: REC_V=0.50375, NDCG_V=0.19007
+2023-12-27 18:13:30, Best in epoch 59, TOP 80: REC_T=0.50694, NDCG_T=0.22363
+[!]2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_T=0.28163, NDCG_T=0.16730
+EPOCH: 59, avg.l2: 0.03030, avg.loss: 0.11537, Time: 226.61449
+EPOCH: 60, avg.l2: 0.03051, avg.loss: 0.11422, Time: 210.92695
+EPOCH: 61, avg.l2: 0.03066, avg.loss: 0.11291, Time: 209.25716
+EPOCH: 62, avg.l2: 0.03083, avg.loss: 0.11501, Time: 210.80058
+EPOCH: 63, avg.l2: 0.03102, avg.loss: 0.11072, Time: 204.49077
+EPOCH: 64, avg.l2: 0.03123, avg.loss: 0.10965, Time: 204.07368
+EPOCH: 65, avg.l2: 0.03143, avg.loss: 0.11555, Time: 204.29338
+EPOCH: 66, avg.l2: 0.03165, avg.loss: 0.11309, Time: 208.61125
+EPOCH: 67, avg.l2: 0.03185, avg.loss: 0.11118, Time: 208.74383
+EPOCH: 68, avg.l2: 0.03205, avg.loss: 0.10907, Time: 210.28420
+2023-12-27 18:48:26, Top_10, Val:  recall: 0.210969, ndcg: 0.122631
+2023-12-27 18:48:26, Top_10, Test: recall: 0.205470, ndcg: 0.145318
+2023-12-27 18:48:26, Top_20, Val:  recall: 0.289633, ndcg: 0.144741
+2023-12-27 18:48:26, Top_20, Test: recall: 0.283209, ndcg: 0.167929
+2023-12-27 18:48:26, Top_40, Val:  recall: 0.385903, ndcg: 0.167381
+2023-12-27 18:48:26, Top_40, Test: recall: 0.387839, ndcg: 0.196500
+2023-12-27 18:48:26, Top_80, Val:  recall: 0.494385, ndcg: 0.188550
+2023-12-27 18:48:26, Top_80, Test: recall: 0.505360, ndcg: 0.223436
+[!]2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_T=0.28163, NDCG_T=0.16730
+EPOCH: 69, avg.l2: 0.03227, avg.loss: 0.11004, Time: 222.03143
+EPOCH: 70, avg.l2: 0.03240, avg.loss: 0.10816, Time: 206.11217
+EPOCH: 71, avg.l2: 0.03258, avg.loss: 0.10759, Time: 203.31188
+EPOCH: 72, avg.l2: 0.03279, avg.loss: 0.10429, Time: 209.63997
+EPOCH: 73, avg.l2: 0.03297, avg.loss: 0.10636, Time: 204.54991
+EPOCH: 74, avg.l2: 0.03311, avg.loss: 0.10763, Time: 203.57714
+EPOCH: 75, avg.l2: 0.03327, avg.loss: 0.10783, Time: 201.55062
+EPOCH: 76, avg.l2: 0.03343, avg.loss: 0.10398, Time: 208.39571
+EPOCH: 77, avg.l2: 0.03362, avg.loss: 0.10519, Time: 207.35316
+EPOCH: 78, avg.l2: 0.03380, avg.loss: 0.10482, Time: 206.01026
+2023-12-27 19:22:59, Top_10, Val:  recall: 0.210649, ndcg: 0.124578
+2023-12-27 19:22:59, Top_10, Test: recall: 0.206532, ndcg: 0.145225
+2023-12-27 19:22:59, Top_20, Val:  recall: 0.293600, ndcg: 0.148026
+2023-12-27 19:22:59, Top_20, Test: recall: 0.283745, ndcg: 0.167913
+2023-12-27 19:22:59, Top_40, Val:  recall: 0.390150, ndcg: 0.170621
+2023-12-27 19:22:59, Top_40, Test: recall: 0.390850, ndcg: 0.197035
+2023-12-27 19:22:59, Top_80, Val:  recall: 0.502719, ndcg: 0.192446
+2023-12-27 19:22:59, Top_80, Test: recall: 0.509561, ndcg: 0.224409
+[!]2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_T=0.28163, NDCG_T=0.16730
+EPOCH: 79, avg.l2: 0.03393, avg.loss: 0.10359, Time: 221.06346
+EPOCH: 80, avg.l2: 0.03409, avg.loss: 0.10213, Time: 205.97630
+EPOCH: 81, avg.l2: 0.03426, avg.loss: 0.10576, Time: 210.04518
+EPOCH: 82, avg.l2: 0.03438, avg.loss: 0.10230, Time: 210.24550
+EPOCH: 83, avg.l2: 0.03452, avg.loss: 0.10502, Time: 211.09059
+EPOCH: 84, avg.l2: 0.03462, avg.loss: 0.10289, Time: 210.52109
+EPOCH: 85, avg.l2: 0.03475, avg.loss: 0.10384, Time: 208.26836
+EPOCH: 86, avg.l2: 0.03489, avg.loss: 0.10111, Time: 209.00201
+EPOCH: 87, avg.l2: 0.03501, avg.loss: 0.10120, Time: 207.34544
+EPOCH: 88, avg.l2: 0.03514, avg.loss: 0.10204, Time: 208.19239
+2023-12-27 19:58:09, Top_10, Val:  recall: 0.208640, ndcg: 0.124943
+2023-12-27 19:58:09, Top_10, Test: recall: 0.205951, ndcg: 0.147997
+2023-12-27 19:58:09, Top_20, Val:  recall: 0.291655, ndcg: 0.148532
+2023-12-27 19:58:09, Top_20, Test: recall: 0.285155, ndcg: 0.170875
+2023-12-27 19:58:09, Top_40, Val:  recall: 0.390305, ndcg: 0.171516
+2023-12-27 19:58:09, Top_40, Test: recall: 0.393737, ndcg: 0.200133
+2023-12-27 19:58:09, Top_80, Val:  recall: 0.498606, ndcg: 0.192554
+2023-12-27 19:58:09, Top_80, Test: recall: 0.506822, ndcg: 0.226648
+[!]2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_T=0.28163, NDCG_T=0.16730
+EPOCH: 89, avg.l2: 0.03524, avg.loss: 0.10258, Time: 226.95576
+EPOCH: 90, avg.l2: 0.03532, avg.loss: 0.10243, Time: 209.91287
+EPOCH: 91, avg.l2: 0.03550, avg.loss: 0.09963, Time: 210.83649
+EPOCH: 92, avg.l2: 0.03567, avg.loss: 0.10271, Time: 209.29096
+EPOCH: 93, avg.l2: 0.03585, avg.loss: 0.10071, Time: 210.37481
+EPOCH: 94, avg.l2: 0.03603, avg.loss: 0.10212, Time: 205.17494
+EPOCH: 95, avg.l2: 0.03621, avg.loss: 0.09999, Time: 202.61953
+EPOCH: 96, avg.l2: 0.03632, avg.loss: 0.09771, Time: 204.41226
+EPOCH: 97, avg.l2: 0.03644, avg.loss: 0.09869, Time: 206.60380
+EPOCH: 98, avg.l2: 0.03656, avg.loss: 0.10032, Time: 209.16146
+2023-12-27 20:33:07, Top_10, Val:  recall: 0.211750, ndcg: 0.124980
+2023-12-27 20:33:07, Top_10, Test: recall: 0.207298, ndcg: 0.148595
+2023-12-27 20:33:07, Top_20, Val:  recall: 0.292529, ndcg: 0.147841
+2023-12-27 20:33:07, Top_20, Test: recall: 0.284249, ndcg: 0.170874
+2023-12-27 20:33:07, Top_40, Val:  recall: 0.391923, ndcg: 0.170891
+2023-12-27 20:33:07, Top_40, Test: recall: 0.392568, ndcg: 0.200517
+2023-12-27 20:33:07, Top_80, Val:  recall: 0.499671, ndcg: 0.191990
+2023-12-27 20:33:07, Top_80, Test: recall: 0.511528, ndcg: 0.227988
+[!]2023-12-27 18:13:30, Best in epoch 59, TOP 20: REC_T=0.28163, NDCG_T=0.16730
+early stopping!{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 10, 'dataset': 'Youshu', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 8039, 'num_bundles': 4771, 'num_items': 32770, 'device': device(type='cpu')}

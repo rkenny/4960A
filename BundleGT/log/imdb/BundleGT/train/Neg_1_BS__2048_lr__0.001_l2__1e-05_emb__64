@@ -1,0 +1,183 @@
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 3, 'num_bundles': 1, 'num_items': 3, 'device': device(type='cpu')}
+EPOCH: 0, , Time: 0.01060
+EPOCH: 1, , Time: 0.01441
+EPOCH: 2, , Time: 0.01448
+EPOCH: 3, , Time: 0.01476
+EPOCH: 4, , Time: 0.01351
+EPOCH: 5, , Time: 0.01412
+EPOCH: 6, , Time: 0.01441
+EPOCH: 7, , Time: 0.01353
+EPOCH: 8, , Time: 0.01392
+EPOCH: 9, , Time: 0.00775
+EPOCH: 10, , Time: 0.01311
+EPOCH: 11, , Time: 0.01422
+EPOCH: 12, , Time: 0.01440
+EPOCH: 13, , Time: 0.00773
+EPOCH: 14, , Time: 0.01269
+EPOCH: 15, , Time: 0.01378
+EPOCH: 16, , Time: 0.01389
+EPOCH: 17, , Time: 0.01369
+EPOCH: 18, , Time: 0.01455
+EPOCH: 19, , Time: 0.01437
+EPOCH: 20, , Time: 0.01422
+EPOCH: 21, , Time: 0.01338
+EPOCH: 22, , Time: 0.01494
+EPOCH: 23, , Time: 0.01412
+EPOCH: 24, , Time: 0.01471
+EPOCH: 25, , Time: 0.01408
+EPOCH: 26, , Time: 0.00794
+EPOCH: 27, , Time: 0.00779
+EPOCH: 28, , Time: 0.01351
+EPOCH: 29, , Time: 0.01403
+EPOCH: 30, , Time: 0.01387
+EPOCH: 31, , Time: 0.01480
+EPOCH: 32, , Time: 0.01357
+EPOCH: 33, , Time: 0.00807
+EPOCH: 34, , Time: 0.01334
+EPOCH: 35, , Time: 0.01315
+EPOCH: 36, , Time: 0.01515
+EPOCH: 37, , Time: 0.00938
+EPOCH: 38, , Time: 0.01411
+EPOCH: 39, , Time: 0.00779
+early stopping!{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 19, 'num_bundles': 100, 'num_items': 249, 'device': device(type='cpu')}
+EPOCH: 0, , Time: 0.01203
+EPOCH: 1, , Time: 0.01071
+EPOCH: 2, , Time: 0.01466
+EPOCH: 3, , Time: 0.01454
+EPOCH: 4, , Time: 0.00907
+EPOCH: 5, , Time: 0.01442
+EPOCH: 6, , Time: 0.01431
+EPOCH: 7, , Time: 0.01446
+EPOCH: 8, , Time: 0.00844
+EPOCH: 9, , Time: 0.01350
+EPOCH: 10, , Time: 0.01448
+EPOCH: 11, , Time: 0.01458
+EPOCH: 12, , Time: 0.00846
+EPOCH: 13, , Time: 0.00833
+EPOCH: 14, , Time: 0.01021
+EPOCH: 15, , Time: 0.00816
+EPOCH: 16, , Time: 0.01418
+EPOCH: 17, , Time: 0.00830
+EPOCH: 18, , Time: 0.00994
+EPOCH: 19, , Time: 0.00847
+EPOCH: 20, , Time: 0.00844
+EPOCH: 21, , Time: 0.01355
+EPOCH: 22, , Time: 0.01434
+EPOCH: 23, , Time: 0.00845
+EPOCH: 24, , Time: 0.00832
+EPOCH: 25, , Time: 0.00908
+EPOCH: 26, , Time: 0.01426
+EPOCH: 27, , Time: 0.01411
+EPOCH: 28, , Time: 0.01438
+EPOCH: 29, , Time: 0.00874
+EPOCH: 30, , Time: 0.01446
+EPOCH: 31, , Time: 0.00846
+EPOCH: 32, , Time: 0.00844
+EPOCH: 33, , Time: 0.01003
+EPOCH: 34, , Time: 0.00844
+EPOCH: 35, , Time: 0.01013
+EPOCH: 36, , Time: 0.00933
+EPOCH: 37, , Time: 0.01454
+EPOCH: 38, , Time: 0.01474
+EPOCH: 39, , Time: 0.00875
+early stopping!{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 21, 'num_bundles': 1000, 'num_items': 1934, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.00276, avg.loss: 0.39080, Time: 0.45714
+2024-01-27 15:59:57, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 15:59:57, Top_10, Test: recall: 0.011998, ndcg: 0.054024
+2024-01-27 15:59:57, Top_20, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 15:59:57, Top_20, Test: recall: 0.022971, ndcg: 0.050111
+2024-01-27 15:59:57, Top_40, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 15:59:57, Top_40, Test: recall: 0.027112, ndcg: 0.045090
+2024-01-27 15:59:57, Top_80, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 15:59:57, Top_80, Test: recall: 0.033834, ndcg: 0.051412
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 21, 'num_bundles': 500, 'num_items': 1064, 'device': device(type='cpu')}
+EPOCH: 0, , Time: 0.00977
+EPOCH: 1, , Time: 0.01362
+EPOCH: 2, , Time: 0.01389
+EPOCH: 3, , Time: 0.00852
+EPOCH: 4, , Time: 0.01388
+EPOCH: 5, , Time: 0.01397
+EPOCH: 6, , Time: 0.01455
+EPOCH: 7, , Time: 0.00890
+EPOCH: 8, , Time: 0.00930
+EPOCH: 9, , Time: 0.00879
+EPOCH: 10, , Time: 0.00825
+EPOCH: 11, , Time: 0.00842
+EPOCH: 12, , Time: 0.00901
+EPOCH: 13, , Time: 0.00878
+EPOCH: 14, , Time: 0.00823
+EPOCH: 15, , Time: 0.00851
+EPOCH: 16, , Time: 0.00939
+EPOCH: 17, , Time: 0.00894
+EPOCH: 18, , Time: 0.00934
+EPOCH: 19, , Time: 0.00856
+EPOCH: 20, , Time: 0.00854
+EPOCH: 21, , Time: 0.01465
+EPOCH: 22, , Time: 0.01510
+EPOCH: 23, , Time: 0.00889
+EPOCH: 24, , Time: 0.00857
+EPOCH: 25, , Time: 0.00860
+EPOCH: 26, , Time: 0.00911
+EPOCH: 27, , Time: 0.00846
+EPOCH: 28, , Time: 0.00852
+EPOCH: 29, , Time: 0.00824
+EPOCH: 30, , Time: 0.00841
+EPOCH: 31, , Time: 0.00862
+EPOCH: 32, , Time: 0.01475
+EPOCH: 33, , Time: 0.00807
+EPOCH: 34, , Time: 0.00827
+EPOCH: 35, , Time: 0.00849
+EPOCH: 36, , Time: 0.00842
+EPOCH: 37, , Time: 0.00911
+EPOCH: 38, , Time: 0.00923
+EPOCH: 39, , Time: 0.01440
+early stopping!{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 21, 'num_bundles': 5000, 'num_items': 4644, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.00298, avg.loss: 0.38807, Time: 6.80632
+2024-01-27 16:04:00, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:04:00, Top_10, Test: recall: 0.057896, ndcg: 0.129936
+2024-01-27 16:04:00, Top_20, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:04:00, Top_20, Test: recall: 0.058390, ndcg: 0.108403
+2024-01-27 16:04:00, Top_40, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:04:00, Top_40, Test: recall: 0.058471, ndcg: 0.096063
+2024-01-27 16:04:00, Top_80, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:04:00, Top_80, Test: recall: 0.063340, ndcg: 0.094572
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 24, 'num_bundles': 50000, 'num_items': 23417, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.01262, avg.loss: 0.20337, Time: 691.36581
+2024-01-27 16:28:44, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:28:44, Top_10, Test: recall: 0.001664, ndcg: 0.146255
+2024-01-27 16:28:44, Top_20, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:28:44, Top_20, Test: recall: 0.002322, ndcg: 0.125482
+2024-01-27 16:28:44, Top_40, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:28:44, Top_40, Test: recall: 0.003250, ndcg: 0.103703
+2024-01-27 16:28:44, Top_80, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 16:28:44, Top_80, Test: recall: 0.003665, ndcg: 0.079788
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 25, 'num_bundles': 75000, 'num_items': 34901, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.01927, avg.loss: 0.18780, Time: 2044.69186
+2024-01-27 17:46:23, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 17:46:23, Top_10, Test: recall: 0.027886, ndcg: 0.248483
+2024-01-27 17:46:23, Top_20, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 17:46:23, Top_20, Test: recall: 0.028462, ndcg: 0.247585
+2024-01-27 17:46:23, Top_40, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 17:46:23, Top_40, Test: recall: 0.030291, ndcg: 0.230229
+2024-01-27 17:46:23, Top_80, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 17:46:23, Top_80, Test: recall: 0.030700, ndcg: 0.175973
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 27, 'num_bundles': 100000, 'num_items': 45643, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.02413, avg.loss: 0.18366, Time: 3634.57403
+2024-01-27 20:15:36, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 20:15:36, Top_10, Test: recall: 0.000738, ndcg: 0.234611
+2024-01-27 20:15:36, Top_20, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 20:15:36, Top_20, Test: recall: 0.001222, ndcg: 0.232173
+2024-01-27 20:15:36, Top_40, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 20:15:36, Top_40, Test: recall: 0.002027, ndcg: 0.205506
+2024-01-27 20:15:36, Top_80, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 20:15:36, Top_80, Test: recall: 0.004206, ndcg: 0.184850
+{'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2, 'dataset': 'imdb', 'model': 'BundleGT', 'embedding_size': 64, 'gpu': '0', 'info': '', 'folder': 'train', 'lr': 0.001, 'l2_reg': 1e-05, 'early_stopping': 40, 'num_ui_layers': 4, 'num_trans_layers': 3, 'gcn_norm': False, 'layer_alpha': None, 'dropout_ratio': 0.0, 'num_token': 70, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'num_users': 27, 'num_bundles': 100000, 'num_items': 45643, 'device': device(type='cpu')}
+EPOCH: 0, avg.l2: 0.02824, avg.loss: 0.15409, Time: 5957.05505
+2024-01-27 23:46:57, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 23:46:57, Top_10, Test: recall: 0.000000, ndcg: 0.000000
+2024-01-27 23:46:57, Top_20, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 23:46:57, Top_20, Test: recall: 0.000000, ndcg: 0.000000
+2024-01-27 23:46:57, Top_40, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 23:46:57, Top_40, Test: recall: 0.000482, ndcg: 0.001535
+2024-01-27 23:46:57, Top_80, Val:  recall: 0.000000, ndcg: 0.000000
+2024-01-27 23:46:57, Top_80, Test: recall: 0.000482, ndcg: 0.000953
