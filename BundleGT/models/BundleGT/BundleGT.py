@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+import pickle
 import math
 import torch
 import torch.nn as nn
@@ -23,10 +23,8 @@ class BundleGT(nn.Module):
         self.num_bundles = conf["num_bundles"]
         self.num_items = conf["num_items"]
 
-        self.eval_bundles = torch.arange(self.num_bundles).to(
-            self.device).long().detach().view(1, -1)
-        self.eval_users = torch.arange(self.num_users).to(
-            self.device).long().detach().view(1, -1)
+        self.eval_bundles = torch.arange(self.num_bundles).to(self.device).long().detach().view(1, -1)
+        self.eval_users = torch.arange(self.num_users).to(self.device).long().detach().view(1, -1)
         # Recommendation Basic <<<
 
         self.num_ui_layers = conf["num_ui_layers"]  # [1,2,3]
@@ -83,6 +81,8 @@ class BundleGT(nn.Module):
             self.MLConf[k] = self.conf[k]
         print("[ML Configuration]", self.MLConf)
         print("[HGT Configuration]", self.HGT.conf)
+        self.ground_truth_u_b = {} # rk - added to get all ground truths
+        self.pred_b = {} # rk - added to get all predictions
 
     def propagate(self):
         return self.HGT()
@@ -99,14 +99,14 @@ class BundleGT(nn.Module):
 
         score = torch.sum(torch.mul(i_u, i_b), dim=-1)
 
-        loss = torch.mean(torch.nn.functional.softplus(
-            score[:, 1] - score[:, 0]))
+        loss = torch.mean(torch.nn.functional.softplus(score[:, 1] - score[:, 0]))
 
         l2_loss = self.embed_L2_norm * self.HGT.reg_loss()
         loss = loss + l2_loss
         losses["l2"] = l2_loss.detach()
 
         losses["loss"] = loss
+        ####print(losses["loss"])
 
         return losses
 
@@ -115,5 +115,38 @@ class BundleGT(nn.Module):
         users_feature, _, bundles_feature = propagate_result
         users_embedding = users_feature[users]
         scores = torch.mm(users_embedding, bundles_feature.t())
-
+        ####print("BundleGT evaluate follows:")
+        # print(users_feature.item()) # 18,64
+        # print(bundles_feature.shape) # 18, 64
+        # help(users_feature)
+        self.scores = scores # rk - added to get results
+        # input("whiskey?")
+        #### print(scores.shape)
+        ####print(scores.ndim)
+        ####print(scores)
+        #### print("BundleGT evaluate finished.")
+        
         return scores
+        
+    def store_ground_truth(self, batch_i, ground_truth_u_b): # rk - i added this
+        self.ground_truth_u_b[batch_i] = ground_truth_u_b
+            
+    def store_pred(self, batch_i, pred_b): # rk - i added this
+        self.pred_b[batch_i] = pred_b
+        
+    def print_ground_truth(self):
+        for batch_i in self.ground_truth_u_b.keys():
+          print(self.ground_truth_u_b[batch_i])
+    def print_pred(self):
+        for batch_i in self.pred_b.keys():
+          print(self.pred_b[batch_i])
+
+    def save_ground_truth(self, dataset):
+        for batch_i in self.ground_truth_u_b.keys():
+            with open('/mnt/4960/4960_git/Outputs/BundleGT/'+dataset+'.ground_truth.pickle', 'wb') as pickleFile:
+                pickle.dump(self.ground_truth_u_b[batch_i], pickleFile, protocol=pickle.HIGHEST_PROTOCOL)
+          
+    def save_pred(self, dataset):
+        for batch_i in self.pred_b.keys():
+            with open('/mnt/4960/4960_git/Outputs/BundleGT/'+dataset+'.pred.pickle', 'wb') as pickleFile:
+                pickle.dump(self.pred_b[batch_i], pickleFile, protocol=pickle.HIGHEST_PROTOCOL)

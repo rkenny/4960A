@@ -1,0 +1,1401 @@
+load config file done!
+{'Youshu': {'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 10}, 'NetEase': {'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 5}, 'iFashion': {'data_path': './datasets', 'batch_size_train': 2048, 'batch_size_test': 2048, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2}, 'imdb': {'data_path': './datasets', 'batch_size_train': 32, 'batch_size_test': 32, 'topk': [1, 2, 3, 4, 5, 10], 'neg_num': 1, 'test_interval': 2, 'epochs': 2}, 'dblp': {'data_path': './datasets', 'batch_size_train': 8192, 'batch_size_test': 8192, 'topk': [10, 20, 40, 80], 'neg_num': 1, 'test_interval': 2}, 'BundleGT': {'embedding_size': 64}}
+Utility.py: users: 18
+Utility.py: bundles: 18
+Utility.py: items: 108
+>>>>>>>>>>B-I statistics>>>>>>>>>>
+Average interactions 6.111111164093018
+Non-zero rows 1.0
+Non-zero columns 1.0
+Matrix density 0.056584362139917695
+>>>>>>>>>>U-I statistics>>>>>>>>>>
+Average interactions 11.05555534362793
+Non-zero rows 1.0
+Non-zero columns 1.0
+Matrix density 0.10236625514403293
+train
+33
+[[ 0  0]
+ [ 0  1]
+ [ 1  1]
+ [ 0  2]
+ [ 2  2]
+ [ 3  3]
+ [ 4  4]
+ [ 0  4]
+ [ 5  5]
+ [ 6  5]
+ [ 7  6]
+ [ 8  6]
+ [ 8  7]
+ [ 8  8]
+ [ 9  9]
+ [ 8  9]
+ [ 5 10]
+ [10 10]
+ [12 11]
+ [11 11]
+ [12 12]
+ [ 0 13]
+ [13 13]
+ [14 14]
+ [ 7 14]
+ [13 14]
+ [ 5 15]
+ [ 3 15]
+ [ 7 15]
+ [ 8 16]
+ [17 17]
+ [15 17]
+ [16 17]]
+Utility get_ub num_users: 18
+Utility get_ub num_bundles: 18
+Utility get_ub indice 0: 33
+Utility get_ub indice 1: 33
+>>>>>>>>>>U-B statistics in train>>>>>>>>>>
+Average interactions 1.8333333730697632
+Non-zero rows 1.0
+Non-zero columns 1.0
+Matrix density 0.10185185185185185
+tune
+33
+[[ 0  0]
+ [ 0  1]
+ [ 1  1]
+ [ 0  2]
+ [ 2  2]
+ [ 3  3]
+ [ 4  4]
+ [ 0  4]
+ [ 5  5]
+ [ 6  5]
+ [ 7  6]
+ [ 8  6]
+ [ 8  7]
+ [ 8  8]
+ [ 9  9]
+ [ 8  9]
+ [ 5 10]
+ [10 10]
+ [12 11]
+ [11 11]
+ [12 12]
+ [ 0 13]
+ [13 13]
+ [14 14]
+ [ 7 14]
+ [13 14]
+ [ 5 15]
+ [ 3 15]
+ [ 7 15]
+ [ 8 16]
+ [17 17]
+ [15 17]
+ [16 17]]
+Utility get_ub num_users: 18
+Utility get_ub num_bundles: 18
+Utility get_ub indice 0: 33
+Utility get_ub indice 1: 33
+>>>>>>>>>>U-B statistics in tune>>>>>>>>>>
+Average interactions 1.8333333730697632
+Non-zero rows 1.0
+Non-zero columns 1.0
+Matrix density 0.10185185185185185
+test
+33
+[[ 0  0]
+ [ 0  1]
+ [ 1  1]
+ [ 0  2]
+ [ 2  2]
+ [ 3  3]
+ [ 4  4]
+ [ 0  4]
+ [ 5  5]
+ [ 6  5]
+ [ 7  6]
+ [ 8  6]
+ [ 8  7]
+ [ 8  8]
+ [ 9  9]
+ [ 8  9]
+ [ 5 10]
+ [10 10]
+ [12 11]
+ [11 11]
+ [12 12]
+ [ 0 13]
+ [13 13]
+ [14 14]
+ [ 7 14]
+ [13 14]
+ [ 5 15]
+ [ 3 15]
+ [ 7 15]
+ [ 8 16]
+ [17 17]
+ [15 17]
+ [16 17]]
+Utility get_ub num_users: 18
+Utility get_ub num_bundles: 18
+Utility get_ub indice 0: 33
+Utility get_ub indice 1: 33
+>>>>>>>>>>U-B statistics in test>>>>>>>>>>
+Average interactions 1.8333333730697632
+Non-zero rows 1.0
+Non-zero columns 1.0
+Matrix density 0.10185185185185185
+cuda available: False
+checkpoints set up
+settings configured
+[ML Configuration] {'lr': 0.001, 'l2_reg': 1e-05, 'embedding_size': 64, 'batch_size_train': 1, 'batch_size_test': 1, 'early_stopping': 0}
+[HGT Configuration] {'n_user': 18, 'n_item': 108, 'n_bundle': 18, 'dim': 64, 'n_ui_layer': 4, 'n_trans_layer': 3, 'device': device(type='cpu'), 'gcn_norm': False, 'layer_alpha': None, 'num_token': 70, 'n_head': 1, 'data_path': './datasets', 'dataset': 'imdb', 'dropout_ratio': 0.0, 'ub_alpha': 0.5, 'bi_alpha': 0.5, 'head_token': False}
+BundleGT ready.
+main py 192: batch_anchor is 0 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 1 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 2 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 3 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 4 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 5 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 6 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 7 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 8 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 9 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 10 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 11 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 12 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 13 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 14 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 15 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 16 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 17 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 18 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 19 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 20 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 21 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 22 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 23 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 24 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 25 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 26 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 27 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 28 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 29 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 30 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 31 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 32 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+EPOCH: 0, avg.l2: 0.00111, avg.loss: 0.00193, Time: 0.58547
+
+main py 192: batch_anchor is 33 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 34 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 35 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 36 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 37 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 38 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 39 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 40 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 41 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 42 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 43 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 44 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 45 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 46 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 47 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 48 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 49 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 50 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 51 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 52 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 53 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 54 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 55 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 56 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 57 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 58 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 59 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 60 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 61 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 62 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 63 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 64 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is False
+main py 192: batch_anchor is 65 test_interval_bs is 66 and (batch_anchor+1) % test_interval_bs == 0 is True
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 25.4014,  42.8920,  38.2954,   7.8980,  42.0093,  16.6043,   5.6883,
+           2.5640,   4.1286,   4.0755,  12.9952,  -2.5053,  -1.9780,  28.8001,
+          22.8791,  14.5944,   1.4863, -19.6119]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[20.0930, 51.1541, 27.8007,  3.7142, 28.6467, 16.6085,  2.3669, -0.7181,
+          1.6835,  0.7747, 12.5335, -5.8269, -1.7101, 21.8156, 19.9898, 11.6201,
+         -1.6373,  5.4000]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 17.1034,  27.5012,  42.2397,   7.7920,  24.0659,  17.2183,   9.5225,
+           4.1395,   6.3831,   7.3436,  11.6340,  -5.6701,  -4.9695,  20.5439,
+          19.6496,  15.2109,   3.5850, -28.6323]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  5.3025,   7.7001,  11.6655,  54.2188,  12.2308,  18.0178,  20.7751,
+          10.7817,  17.5272,  14.4779,  25.4664, -23.3041, -15.4175,   9.6589,
+          28.3562,  49.7412,   8.6421, -18.4286]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 19.3662,  29.1158,  24.5252,   8.5227,  53.4437,  14.6338,   1.3364,
+           0.1466,  -0.7860,  -5.8723,  11.0720,  -2.5241,  -1.1858,  17.7765,
+           9.1928,  11.9369,  -0.9373, -23.4258]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  9.9301,  19.8844,  19.4089,  19.6250,  17.1609,  69.7339,  14.8454,
+           6.6315,  11.4703,   7.3715,  55.3241, -13.0296,  -5.8435,   6.3361,
+          25.6379,  42.6415,   4.3215, -18.7984]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  7.5739,  15.5354,  15.9097,  10.0818,  13.5818,  68.9221,   7.8926,
+           2.7658,   5.0556,   0.5968,  35.9400,  -8.9732,  -2.4978,   3.6860,
+          18.3322,  30.2472,   1.0920, -27.6582]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  5.0792,   8.1482,  13.2434,  22.9492,   6.2682,  17.1029,  26.7422,
+          14.3401,  18.9295,  19.7911,  21.0904, -13.1621,  -6.9227,  10.1403,
+          31.1233,  33.9522,  12.8142, -13.2408]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  2.9747,   2.0681,  10.5094,  17.3852,   1.4216,   8.1674,  30.0906,
+          23.8312,  26.0960,  31.5356,  14.7156, -10.6716,  -6.2010,   4.3264,
+          13.2989,  25.9204,  22.8423, -19.0757]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  1.7453,   1.2386,   5.7161,   6.5581,  -5.2777,  -0.3407,  14.5470,
+          12.7994,  20.2839,  38.8137,   2.4349,  -8.7974,  -5.8424,   3.5769,
+           8.0294,  12.1746,  11.3734, -14.6703]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 5.8105, 11.2198,  9.8421, 16.4280,  9.4284, 33.9621, 12.7414,  6.8337,
+         10.1944,  5.0684, 71.9578, -7.0968, -3.2985,  3.8549, 16.7284, 30.6440,
+          4.7778,  9.7450]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -0.7625,  -5.3890,  -4.1432, -15.4770,  -1.6098, -10.2969,  -8.0786,
+          -4.2789,  -7.3618,  -9.6309,  -7.7174,  59.9336,  35.1523,  -1.8043,
+         -12.4329, -16.9036,  -2.7359,  11.5348]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -1.4182,  -4.3451,  -6.1735, -18.2851,  -2.0082,  -7.2922,  -8.0677,
+          -4.6937,  -8.0271, -11.0260,  -7.1106,  66.1232,  43.0997,  -1.8456,
+         -10.4579, -18.0726,  -2.9750,  12.5442]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[12.9465, 22.3703, 21.6978,  8.5005, 16.7251,  5.7608,  6.6416,  1.1578,
+          3.4139,  4.6436,  5.8975, -2.8927, -1.0540, 31.6428, 42.4129, 11.8615,
+          0.0988,  8.5255]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  8.2591,  16.3236,  15.3546,  16.6113,   8.4141,  19.1712,  12.5476,
+           1.8107,   6.6499,   6.8045,  17.1413, -10.7743,  -3.8676,  24.6425,
+          58.8659,  25.5702,   0.6286,   6.3979]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -7.3811,  -0.5761, -20.9731, -10.4407, -17.4564, -19.0299,  -9.9620,
+          -6.2809,  -8.2901, -12.2261,   4.8318,  10.9257,   5.9449,   1.3284,
+           4.9111, -11.0737,  -5.3089, 199.8084]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -6.3505,   1.6818, -20.2646, -10.8899, -15.8399, -19.2899, -10.0122,
+          -6.0821,  -8.2049, -11.8528,   5.1973,   9.0461,   5.1279,   2.4187,
+           5.0672, -11.4069,  -5.2086, 200.6194]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -7.0347,   0.7721, -21.0999, -10.8178, -16.6221, -15.6853, -10.7287,
+          -6.6316,  -9.0430, -13.5185,   6.2372,   9.4950,   5.5460,   1.8406,
+           5.4943, -10.8849,  -5.7114, 198.6528]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 25.4014,  42.8920,  38.2954,   7.8980,  42.0093,  16.6043,   5.6883,
+           2.5640,   4.1286,   4.0755,  12.9952,  -2.5053,  -1.9780,  28.8001,
+          22.8791,  14.5944,   1.4863, -19.6119]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[20.0930, 51.1541, 27.8007,  3.7142, 28.6467, 16.6085,  2.3669, -0.7181,
+          1.6835,  0.7747, 12.5335, -5.8269, -1.7101, 21.8156, 19.9898, 11.6201,
+         -1.6373,  5.4000]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 17.1034,  27.5012,  42.2397,   7.7920,  24.0659,  17.2183,   9.5225,
+           4.1395,   6.3831,   7.3436,  11.6340,  -5.6701,  -4.9695,  20.5439,
+          19.6496,  15.2109,   3.5850, -28.6323]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  5.3025,   7.7001,  11.6655,  54.2188,  12.2308,  18.0178,  20.7751,
+          10.7817,  17.5272,  14.4779,  25.4664, -23.3041, -15.4175,   9.6589,
+          28.3562,  49.7412,   8.6421, -18.4286]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 19.3662,  29.1158,  24.5252,   8.5227,  53.4437,  14.6338,   1.3364,
+           0.1466,  -0.7860,  -5.8723,  11.0720,  -2.5241,  -1.1858,  17.7765,
+           9.1928,  11.9369,  -0.9373, -23.4258]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  9.9301,  19.8844,  19.4089,  19.6250,  17.1609,  69.7339,  14.8454,
+           6.6315,  11.4703,   7.3715,  55.3241, -13.0296,  -5.8435,   6.3361,
+          25.6379,  42.6415,   4.3215, -18.7984]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  7.5739,  15.5354,  15.9097,  10.0818,  13.5818,  68.9221,   7.8926,
+           2.7658,   5.0556,   0.5968,  35.9400,  -8.9732,  -2.4978,   3.6860,
+          18.3322,  30.2472,   1.0920, -27.6582]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  5.0792,   8.1482,  13.2434,  22.9492,   6.2682,  17.1029,  26.7422,
+          14.3401,  18.9295,  19.7911,  21.0904, -13.1621,  -6.9227,  10.1403,
+          31.1233,  33.9522,  12.8142, -13.2408]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  2.9747,   2.0681,  10.5094,  17.3852,   1.4216,   8.1674,  30.0906,
+          23.8312,  26.0960,  31.5356,  14.7156, -10.6716,  -6.2010,   4.3264,
+          13.2989,  25.9204,  22.8423, -19.0757]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  1.7453,   1.2386,   5.7161,   6.5581,  -5.2777,  -0.3407,  14.5470,
+          12.7994,  20.2839,  38.8137,   2.4349,  -8.7974,  -5.8424,   3.5769,
+           8.0294,  12.1746,  11.3734, -14.6703]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ 5.8105, 11.2198,  9.8421, 16.4280,  9.4284, 33.9621, 12.7414,  6.8337,
+         10.1944,  5.0684, 71.9578, -7.0968, -3.2985,  3.8549, 16.7284, 30.6440,
+          4.7778,  9.7450]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -0.7625,  -5.3890,  -4.1432, -15.4770,  -1.6098, -10.2969,  -8.0786,
+          -4.2789,  -7.3618,  -9.6309,  -7.7174,  59.9336,  35.1523,  -1.8043,
+         -12.4329, -16.9036,  -2.7359,  11.5348]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -1.4182,  -4.3451,  -6.1735, -18.2851,  -2.0082,  -7.2922,  -8.0677,
+          -4.6937,  -8.0271, -11.0260,  -7.1106,  66.1232,  43.0997,  -1.8456,
+         -10.4579, -18.0726,  -2.9750,  12.5442]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[12.9465, 22.3703, 21.6978,  8.5005, 16.7251,  5.7608,  6.6416,  1.1578,
+          3.4139,  4.6436,  5.8975, -2.8927, -1.0540, 31.6428, 42.4129, 11.8615,
+          0.0988,  8.5255]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[  8.2591,  16.3236,  15.3546,  16.6113,   8.4141,  19.1712,  12.5476,
+           1.8107,   6.6499,   6.8045,  17.1413, -10.7743,  -3.8676,  24.6425,
+          58.8659,  25.5702,   0.6286,   6.3979]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -7.3811,  -0.5761, -20.9731, -10.4407, -17.4564, -19.0299,  -9.9620,
+          -6.2809,  -8.2901, -12.2261,   4.8318,  10.9257,   5.9449,   1.3284,
+           4.9111, -11.0737,  -5.3089, 199.8084]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -6.3505,   1.6818, -20.2646, -10.8899, -15.8399, -19.2899, -10.0122,
+          -6.0821,  -8.2049, -11.8528,   5.1973,   9.0461,   5.1279,   2.4187,
+           5.0672, -11.4069,  -5.2086, 200.6194]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+BundleGT evaluate follows:
+tensor([[ 7.6226e-01,  1.4888e+00,  1.2305e-01,  ...,  3.8585e-01,
+         -1.8790e-01,  5.7060e-01],
+        [ 9.1298e-01,  1.1636e+00,  1.8698e-01,  ..., -6.6294e-01,
+          6.7947e-01,  6.8616e-01],
+        [ 4.6941e-01,  1.5153e+00,  1.6197e-03,  ...,  1.8493e-01,
+          2.6744e-01,  5.6838e-02],
+        ...,
+        [ 9.3060e-01, -6.4790e-01, -2.6256e+00,  ...,  4.0972e-01,
+          4.6397e-01, -2.3016e+00],
+        [ 9.4942e-01, -6.8927e-01, -2.7871e+00,  ...,  4.1067e-01,
+          4.0544e-01, -2.4480e+00],
+        [ 1.0390e+00, -9.4207e-01, -2.6251e+00,  ...,  4.0249e-01,
+          5.6928e-01, -2.2922e+00]], grad_fn=<AddBackward0>)
+tensor([[ 0.4665,  0.7957, -0.0142,  ...,  0.2740, -0.2434,  0.3254],
+        [ 0.8754,  1.1487,  0.1563,  ..., -0.5681,  0.5331,  0.7578],
+        [ 0.4165,  1.5296,  0.0187,  ...,  0.2165,  0.1596,  0.1235],
+        ...,
+        [ 1.1210, -0.3507, -1.2354,  ..., -1.1223, -0.4941, -0.2955],
+        [-0.0143, -0.0685,  0.0799,  ...,  0.3164,  0.3283, -0.6567],
+        [ 1.3454, -1.0892, -3.7907,  ...,  0.5647,  0.6571, -3.3048]],
+       grad_fn=<AddBackward0>)
+tensor([[ -7.0347,   0.7721, -21.0999, -10.8178, -16.6221, -15.6853, -10.7287,
+          -6.6316,  -9.0430, -13.5185,   6.2372,   9.4950,   5.5460,   1.8406,
+           5.4943, -10.8849,  -5.7114, 198.6528]], grad_fn=<MmBackward0>)
+BundleGT evaluate finished.
+main.py get_metrics: topk is 1
+main.py get_metrics: topk is 2
+main.py get_metrics: topk is 3
+main.py get_metrics: topk is 4
+main.py get_metrics: topk is 5
+main.py get_metrics: topk is 10
+2024-03-24 21:44:47, Top_1, Val:  recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_1, Test: recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_2, Val:  recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_2, Test: recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_3, Val:  recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_3, Test: recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_4, Val:  recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_4, Test: recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_5, Val:  recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_5, Test: recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_10, Val:  recall: 0.000000, ndcg: 0.000000
+2024-03-24 21:44:47, Top_10, Test: recall: 0.000000, ndcg: 0.000000
+top10 as the final evaluation standard
+2024-03-24 21:44:47, Best in epoch 1, TOP 1: REC_V=0.00000, NDCG_V=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 1: REC_T=0.00000, NDCG_T=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 2: REC_V=0.00000, NDCG_V=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 2: REC_T=0.00000, NDCG_T=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 3: REC_V=0.00000, NDCG_V=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 3: REC_T=0.00000, NDCG_T=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 4: REC_V=0.00000, NDCG_V=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 4: REC_T=0.00000, NDCG_T=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 5: REC_V=0.00000, NDCG_V=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 5: REC_T=0.00000, NDCG_T=0.00000
+2024-03-24 21:44:47, Best in epoch 1, TOP 10: REC_V=0.00000, NDCG_V=0.00000
+[1;31m2024-03-24 21:44:47, Best in epoch 1, TOP 10: REC_T=0.00000, NDCG_T=0.00000[0m
+[!][1;41m 2024-03-24 21:44:47, Best in epoch 1, TOP 10: REC_T=0.00000, NDCG_T=0.00000 [0m
+EPOCH: 1, avg.l2: 0.00086, avg.loss: 0.00088, Time: 0.94907
+

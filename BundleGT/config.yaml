@@ -24,11 +24,51 @@ iFashion:
 
 imdb:
   data_path: './datasets'
-  batch_size_train: 32 # changed from 2048 to 32 1/22 21:54
-  batch_size_test: 32 # changed from 2048 to 32 1/22 21:54
-  topk: [10, 20, 40, 80]
+  batch_size_train: 256 # changed from 2048 to 32 1/22 21:54
+  batch_size_test: 256 # changed from 2048 to 32 1/22 21:54
+  topk: [1, 2, 3, 4, 5, 10] # , 20, 40, 80]
+  neg_num: 1
+  test_interval: 1
+  epochs: 1
+
+imdbtoy:
+  data_path: './datasets'
+  batch_size_train: 256 # changed from 2048 to 32 1/22 21:54
+  batch_size_test: 256 # changed from 2048 to 32 1/22 21:54
+  topk: [1, 2, 3, 4, 5, 10] # , 20, 40, 80]
   neg_num: 1
   test_interval: 2
+  epochs: 2
+  
+dblp:
+  data_path: './datasets'
+  batch_size_train: 8192
+  batch_size_test: 8192
+  topk: [10, 20, 40, 80]
+  neg_num: 1 # was 1
+  test_interval: 1
+  epochs: 1
+
+gith:
+  data_path: './datasets'
+  batch_size_train: 8192
+  batch_size_test: 8192
+  topk: [10, 20, 40, 80]
+  neg_num: 1 # was 1
+  test_interval: 1
+  epochs: 1
+
+uspt:
+  data_path: './datasets'
+  batch_size_train: 16
+  batch_size_test: 16
+  topk: [10, 20, 40, 80]
+  neg_num: 1 # was 1
+  test_interval: 1
+  epochs: 1
+
+
 
 BundleGT:
   embedding_size: 64
+  

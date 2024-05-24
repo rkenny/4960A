@@ -92,11 +92,14 @@ class Datasets():
     def __init__(self, conf):
         self.path = conf['data_path']
         self.name = conf['dataset']
+
         batch_size_train = conf['batch_size_train']
         batch_size_test = conf['batch_size_test']
 
         self.num_users, self.num_bundles, self.num_items = self.get_data_size()
-
+        print("Utility.py: users: " + str(self.num_users))
+        print("Utility.py: bundles: " + str(self.num_bundles))
+        print("Utility.py: items: " + str(self.num_items))
         b_i_graph = self.get_bi()
         u_i_pairs, u_i_graph = self.get_ui()
 
@@ -146,6 +149,7 @@ class Datasets():
 
         indice = np.array(b_i_pairs, dtype=np.int32)
         values = np.ones(len(b_i_pairs), dtype=np.float32)
+        
         b_i_graph = sp.coo_matrix(
             (values, (indice[:, 0], indice[:, 1])), shape=(self.num_bundles, self.num_items)).tocsr()
 
@@ -169,11 +173,19 @@ class Datasets():
 
 
     def get_ub(self, task):
+        print(task)
         with open(os.path.join(self.path, self.name, 'user_bundle_{}.txt'.format(task)), 'r') as f:
             u_b_pairs = list(map(lambda s: tuple(int(i) for i in s[:-1].split('\t')), f.readlines()))
 
         indice = np.array(u_b_pairs, dtype=np.int32)
         values = np.ones(len(u_b_pairs), dtype=np.float32)
+        print(len(u_b_pairs))
+        print(indice)
+        print("Utility get_ub num_users: " + str(self.num_users))
+        print("Utility get_ub num_bundles: " + str(self.num_bundles))
+        print("Utility get_ub indice 0: " + str(len(indice[:, 0])))
+        print("Utility get_ub indice 1: " + str(len(indice[:, 1])))
+        
         u_b_graph = sp.coo_matrix(
             (values, (indice[:, 0], indice[:, 1])), shape=(self.num_users, self.num_bundles)).tocsr()
 

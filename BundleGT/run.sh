@@ -1,1 +1,4 @@
-python3 main.py -g 0 -m BundleGT -d Youshu --info="" --batch_size_test=2048 --batch_size_train=2048  --lr=1e-3 --l2_reg=1e-5 --num_ui_layer=4 --gcn_norm=0 --num_trans_layer=3 --num_token=70 --folder="train" --early_stopping=40 --ub_alpha=0.5 --bi_alpha=0.5
+python3 main.py -g 0 -m BundleGT -d imdb --info="" \
+  --batch_size_test=1 --batch_size_train=1 --early_stopping 0 \
+  --lr=1e-3 --l2_reg=1e-5 --num_ui_layer=4 --gcn_norm=0 --num_trans_layer=3 \
+  --num_token=70 --folder="train" --ub_alpha=0.5 --bi_alpha=0.5

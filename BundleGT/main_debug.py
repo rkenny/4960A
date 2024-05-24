@@ -74,8 +74,7 @@ def get_cmd():
 def main():
     conf_ori = yaml.safe_load(open("./config.yaml"))
     print("load config file done!")
-    print(conf_ori)
-    
+
     paras = get_cmd().__dict__
     dataset_name = paras["dataset"]
 
@@ -94,8 +93,9 @@ def main():
     # manual configures
     for k in paras:
         conf[k] = paras[k]
-        
     dataset = Datasets(conf)
+    print("Early quit")
+    exit()
     conf["gpu"] = paras["gpu"]
     conf["info"] = paras["info"]
 
@@ -107,7 +107,7 @@ def main():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("cuda available:",torch.cuda.is_available())
     conf["device"] = device
-    
+
     
     log_path = "./log/%s/%s" %(conf["dataset"], conf["model"])
     if conf["folder"] != "":
@@ -120,7 +120,7 @@ def main():
         os.makedirs(checkpoint_model_path)
     if not os.path.isdir(checkpoint_conf_path):
         os.makedirs(checkpoint_conf_path)
-    print("checkpoints set up")
+    
     conf["lr"] = eval(conf["lr"]) if type(conf["lr"]) is str else conf["lr"]
     conf["l2_reg"] = eval(conf["l2_reg"]) if type(conf["l2_reg"]) is str else conf["l2_reg"]
 
@@ -135,7 +135,7 @@ def main():
         "l2_", str(conf["l2_reg"]), 
         "emb_", str(conf["embedding_size"]),
         ]
-    print("settings configured")
+
     setting = "_".join(settings)
     log_path = log_path + "/" + setting
     base_checkpoint_model_path = checkpoint_model_path
@@ -146,7 +146,7 @@ def main():
         model = BundleGT(conf, dataset.graphs).to(device)
     else:
         raise ValueError("Unimplemented model %s" %(conf["model"]))
-    print("BundleGT ready.")
+    
     with open(log_path, "a") as log:
         log.write("%s\n" %(conf))
     
@@ -161,7 +161,6 @@ def main():
     setup_seed()
     if conf['early_stopping'] > 0 :
         conf['epochs'] = 10000
-    
     for epoch in range(conf['epochs']):
         epoch_anchor = epoch * batch_cnt
         model.train(True)
@@ -183,35 +182,34 @@ def main():
             for l in losses:
                 if not l in avg_loss: avg_loss[l] = []
                 avg_loss[l].append(losses[l].detach().cpu())
-            topk_ = 10 
+            
             pbar.set_description(
-                "\033[1;41m[%.4f]\033[0m"%best_metrics["test"]["recall"][topk_] +\
-                " epoch: %d, %s" %(epoch, ", ".join(["%s: %.4f"%(l, losses[l]) for l in losses]))
+                "\033[1;41m[%.4f]\033[0m"%best_metrics["test"]["recall"][20] +\
+                " epoch: %d, %s" %(epoch, 
+                                    ", ".join(["%s: %.4f"%(l, losses[l]) for l in losses]))
                 )
-            # print("main py 192: batch_anchor is " + str(batch_anchor) + " test_interval_bs is " + str(test_interval_bs) + " and (batch_anchor+1) % test_interval_bs == 0 is " + str((batch_anchor+1) % test_interval_bs == 0))
+            
             if (batch_anchor+1) % test_interval_bs == 0:  
                 metrics = {}
-                metrics["val"] = test(model, dataset.val_loader, conf, batch_i, True) # rk - updated to keep results
-                metrics["test"] = test(model, dataset.test_loader, conf, batch_i, False) # rk - updated to keep results
+                metrics["val"] = test(model, dataset.val_loader, conf)
+                metrics["test"] = test(model, dataset.test_loader, conf)
                 best_metrics, best_perform, best_epoch = log_metrics(conf, model, metrics, log_path, checkpoint_model_path, checkpoint_conf_path, epoch, batch_anchor, best_metrics, best_perform, best_epoch)
-        # test(model, dataset.val_loader, conf) # just for the call?       
+                    
         if conf['early_stopping'] > 0 and (epoch - best_epoch) >= conf['early_stopping']:
             with open(log_path, "a") as f:
                 str_ = "early stopping!"
                 f.write(str_)
             break
-
+        
         with open(log_path, "a") as f:
+
             loss_str = "EPOCH: {}, {}, Time: {:.5f}\n".format(epoch,
                                                         ', '.join(['avg.%s: %.5f'%(l, np.mean(avg_loss[l])) for l in avg_loss])
                                                         , time.time() - s_time)
             avg_loss = []
             f.write(loss_str)
             print(loss_str)
-    model.save_ground_truth(conf["dataset"]) # rk - get the scores here
-    model.save_pred(conf["dataset"]) # rk - get the scores here
-    
-    input("press enter to continue.") # rk - this is just to pause before exit
+
 def init_best_metrics(conf):
     best_metrics = {}
     best_metrics["val"] = {}
@@ -254,9 +252,9 @@ def log_metrics(conf, model, metrics, log_path, checkpoint_model_path, checkpoin
 
     log = open(log_path, "a")
 
-    topk_ = 10
+    topk_ = 20
     print("top%d as the final evaluation standard" %(topk_))
-    if metrics["val"]["recall"][topk_] >= best_metrics["val"]["recall"][topk_] and metrics["val"]["ndcg"][topk_] >= best_metrics["val"]["ndcg"][topk_]:
+    if metrics["val"]["recall"][topk_] > best_metrics["val"]["recall"][topk_] and metrics["val"]["ndcg"][topk_] > best_metrics["val"]["ndcg"][topk_]:
         # torch.save(model.state_dict(), checkpoint_model_path)
         dump_conf = dict(conf)
         del dump_conf["device"]
@@ -270,11 +268,12 @@ def log_metrics(conf, model, metrics, log_path, checkpoint_model_path, checkpoin
 
             best_perform["test"][topk] = "%s, Best in epoch %d, TOP %d: REC_T=%.5f, NDCG_T=%.5f" %(curr_time, best_epoch, topk, best_metrics["test"]["recall"][topk], best_metrics["test"]["ndcg"][topk])
             best_perform["val"][topk] = "%s, Best in epoch %d, TOP %d: REC_V=%.5f, NDCG_V=%.5f" %(curr_time, best_epoch, topk, best_metrics["val"]["recall"][topk], best_metrics["val"]["ndcg"][topk])
-            # print(best_perform["val"][topk])
+            print(best_perform["val"][topk])
             if topk == topk_:
+                
                 print("\033[1;31m" + best_perform["test"][topk] + "\033[0m") 
-            # else:
-                # print(best_perform["test"][topk])
+            else:
+                print(best_perform["test"][topk])
             log.write(best_perform["val"][topk] + "\n")
             log.write(best_perform["test"][topk] + "\n")
     
@@ -286,7 +285,7 @@ def log_metrics(conf, model, metrics, log_path, checkpoint_model_path, checkpoin
     return best_metrics, best_perform, best_epoch
 
 
-def test(model, dataloader, conf, batch_i, keep=False): # rk - updated from test(model, dataloader, conf):
+def test(model, dataloader, conf):
     tmp_metrics = {}
     for m in ["recall", "ndcg"]:
         tmp_metrics[m] = {}
@@ -296,23 +295,17 @@ def test(model, dataloader, conf, batch_i, keep=False): # rk - updated from test
     device = conf["device"]
     model.eval()
     rs = model.propagate()
-
     t_bar = tqdm(enumerate(dataloader), total=len(dataloader))
     for batch_i, batch in t_bar:
         s_time = time.time()
         users, ground_truth_u_b, train_mask_u_b = batch
-        
         pred_b = model.evaluate(rs, users.to(device)).to('cpu')
         e_time = time.time() - s_time
         pred_b = pred_b - 1e8 * train_mask_u_b
         tmp_metrics = get_metrics(tmp_metrics, ground_truth_u_b, pred_b, conf["topk"])
         d_time = time.time()-  s_time
         t_bar.set_description("e_time: %.5f d_time: %.5f" %(e_time, d_time))
-        if keep: # rk - added this section
-            model.store_ground_truth(batch_i, ground_truth_u_b)  # rk - added this section
-            model.store_pred(batch_i, pred_b)  # rk - added this section
 
-    
     metrics = {}
     for m, topk_res in tmp_metrics.items():
         metrics[m] = {}
@@ -325,7 +318,6 @@ def test(model, dataloader, conf, batch_i, keep=False): # rk - updated from test
 def get_metrics(metrics, grd, pred, topks):
     tmp = {"recall": {}, "ndcg": {}}
     for topk in topks:
-        # print("main.py get_metrics: topk is " + str(topk))
         _, col_indice = torch.topk(pred, topk)
         row_indice = torch.zeros_like(col_indice) + torch.arange(pred.shape[0], device=pred.device, dtype=torch.long).view(-1, 1)
         is_hit = grd[row_indice.view(-1), col_indice.view(-1)].view(-1, topk)
