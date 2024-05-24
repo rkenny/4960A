@@ -12,11 +12,13 @@ class Database:
   paperAuthorInsertSQL = "insert into paper_author (paperId, authorId) values (%s, %s)"
   keywordAuthorInsertSQL = "insert into keyword_author (keywordId, authorId) values (%s, %s)"
   keywordPaperInsertSQL = "insert into keyword_paper (keywordId, paperId) values (%s, %s)"
+  keywordPaperKeywordAuthorSQL = "insert into paper_keyword_author (paperId, keywordId, authorId) values (%s, %s, %s)"
   batchSize = 10000
   uncommittedInserts = 0
   totalInserts = 0
   def __init__(self, **kwargs):
-    self.dbConnection = mysql.connector.connect(host="localhost", user=kwargs.db_user, password=kwargs.db_password, database=kwargs.db_name)
+    print(kwargs)
+    self.dbConnection = mysql.connector.connect(host="localhost", user=kwargs['db_user'], password=kwargs['db_password'], database=kwargs['db_name'])
     self.dbCursor = self.dbConnection.cursor()
   def __del__(self):
     print("Done. " + str(self.totalInserts) + " rows inserted.")
@@ -33,6 +35,8 @@ class Database:
     self.insert(self.keywordAuthorInsertSQL, (keywordId, authorId))
   def insertKeywordPaper(self, keywordId, paperId):
     self.insert(self.keywordPaperInsertSQL, (keywordId, paperId))
+  def insertPaperKeywordAuthor(self, paperId, skillIndex, authorId):
+    self.insert(self.keywordPaperKeywordAuthorSQL, (paperId, skillIndex, authorId))
   def insert(self, sql, values):
     try:
       self.dbCursor.execute(sql, values)
@@ -53,52 +57,30 @@ def main():
   db_name = os.environ['DB_NAME']
   db = Database(db_user=db_user, db_password=db_pass, db_name=db_name)
   Verbose = True
-  indexes = pickle.load(open("/mnt/b_4960/Data/dblp/dblp.v12.json.filtered.mt5.ts2/indexes.pkl", "rb"))
-  teamsVecs = pickle.load(open("/mnt/b_4960/Data/dblp/dblp.v12.json.filtered.mt5.ts2/teams.pkl", "rb"))
+  print("Loading indexes pickle.")
+  indexes = pickle.load(open("/mnt/4960/4960_git/raw_data/dblp/dblp.v12.json.filtered.mt75.ts3/indexes.pkl", "rb"))
+  print("Done with indexes.")
+  print("Loading teams pickle.")
+  teamsVecs = pickle.load(open("/mnt/4960/4960_git/raw_data/dblp/dblp.v12.json.filtered.mt75.ts3/teams.pkl", "rb"))
+  print("Done with teams.")
   # indexes = pickle.load(open("/mnt/b_4960/Data/dblp/toy.dblp.v12.json/indexes.pkl", "rb"))
   # teamsVecs = pickle.load(open("/mnt/b_4960/Data/dblp/toy.dblp.v12.json/teams.pkl", "rb"))
   for paper in teamsVecs: # movieID to bundle .. that is movie.id
-    print(str(paper.id) + " is a bundle. The title is: " + paper.title)
-    db.insertPaper(paper.id, paper.title)
+    bundleId = indexes["t2i"][paper.id]
+    ### db.insertPaper(bundleId, paper.title)
     for author in paper.members: # team members are "items" # in imdb, they have a trailing .0 that I want to remove using int.
-      authorId = int(author.id)
-      print(" has author " + author.name + " id("+str(author.id)+")")
-      db.insertAuthor(author.id, author.name)
-      db.insertPaperAuthor(paper.id, author.id)
+      authorId = indexes["c2i"][str(author.id)+"_"+author.name]
+      ### db.insertAuthor(authorId, author.name)
+      ###db.insertPaperAuthor(bundleId, authorId)
       for skill in paper.skills:
         skillIndex = str(indexes['s2i'][skill])
-        print("  with skill " + skill + " id: " + skillIndex)
-        db.insertKeyword(skillIndex, skill)
-        db.insertKeywordAuthor(skillIndex, authorId)
-        db.insertKeywordPaper(skillIndex, paper.id)
+        ###db.insertKeyword(skillIndex, skill)
+        ###db.insertKeywordAuthor(skillIndex, authorId)
+        ### db.insertKeywordPaper(skillIndex, bundleId)
+        print(str(paper.id) + " " + str(skillIndex) + " " + str(authorId))
+        db.insertPaperKeywordAuthor(bundleId, skillIndex, authorId)
   
 
 if __name__ == "__main__":    
   main()
 
-
-
-
-   
-
-
-#for bundleId in [(bundleId, str(bundleId)) for bundleId in indexes["i2t"].keys()] : # movieId to bundle ... in this case, index to title
-#    print("checking bundleId " + bundleId[1] + " actual title: " + str(indexes["i2t"][bundleId[0]])) if Verbose else None
-#    userIds = teamsVecs["skill"][bundleId[0]].rows[0] # genre as user for imdb ... in this case, the genre is the "skill"
-#    itemIds = teamsVecs["member"][bundleId[0]].rows[0] # crew as item for imdb
-#    break
-    # for itemId in [(itemId, str(itemId)) for itemId in itemIds]:
-    #    for userId in [(userId, str(userId)) for userId in userIds]:
-    #        print(" [" + indexes["i2s"][userId[0]] + "] for [" +indexes["i2c"][itemId[0]]+ "] as ", end="") if Verbose else None
-    #        print(userId[1] + " " + itemId[1])
-    #        ## userItemFile.write(userId[1] + "\t" + itemId[1] + "\n")
-    #        print(" [" + indexes["i2s"][userId[0]] + "] for [" +str(indexes["i2t"][bundleId[0]])+ "] as ", end="") if Verbose else None
-    #        # print(userId[1] + " " + bundleId[1]) # this is the train/test set
-    #        # if random.random() < testSetSize:
-    #        #     userBundleTestFile.write(userId[1] + "\t" + bundleId[1] + "\n")
-    #        # else:
-    #        #     userBundleTrainFile.write(userId[1] + "\t" + bundleId[1] + "\n")
-    #    print(" [" + str(indexes["i2t"][bundleId[0]]) +"] has crew " + indexes["i2c"][bundleId[0]] + " as ", end="") if Verbose else None
-    #    # print(bundleId[1] + " " + itemId[1])
-    #    # bundleItemFile.write(bundleId[1] + "\t" + itemId[1] + "\n")
-  

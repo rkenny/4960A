@@ -12,12 +12,11 @@ class Database:
   movieMemberInsertSQL = "insert into movie_member (movieId, memberId) values (%s, %s)"
   genreMemberInsertSQL = "insert into genre_member (genreId, memberId) values (%s, %s)"
   genreMovieInsertSQL = "insert into genre_movie (genreId, movieId) values (%s, %s)"
-  movieGenreMemberInsertSQL = "insert into movie_genre_member (movieId, genreId, memberId) values (%s, %s, %s)"
   batchSize = 10000
   uncommittedInserts = 0
   totalInserts = 0
-  def __init__(self, **kwargs):
-    self.dbConnection = mysql.connector.connect(host="localhost", user=kwargs['db_user'], password=kwargs['db_password'], database=kwargs['db_name'])
+  def __init__(self):
+    self.dbConnection = mysql.connector.connect(host="localhost", user=kwargs.db_user, password=kwargs.db_password, database=kwargs.db_name)
     self.dbCursor = self.dbConnection.cursor()
   def __del__(self):
     print("Done. " + str(self.totalInserts) + " rows inserted.")
@@ -34,8 +33,6 @@ class Database:
     self.insert(self.genreMemberInsertSQL, (genreId, memberId))
   def insertGenreMovie(self, genreId, movieId):
     self.insert(self.genreMovieInsertSQL, (genreId, movieId))
-  def insertMovieGenreMember(self, movieId, genreId, memberId):
-    self.insert(self.movieGenreMemberInsertSQL, (movieId, genreId, memberId))
   def insert(self, sql, values):
     try:
       self.dbCursor.execute(sql, values)
@@ -56,23 +53,22 @@ def main():
   db_name = os.environ['DB_NAME']
   db = Database(db_user=db_user, db_password=db_pass, db_name=db_name)
   Verbose = True
-  indexes = pickle.load(open("/mnt/4960/4960_git/raw_data/imdb/toy.title.basics.tsv/indexes.pkl", "rb"))
-  teamsVecs = pickle.load(open("/mnt/4960/4960_git/raw_data/imdb/toy.title.basics.tsv/teams.pkl", "rb"))
+  indexes = pickle.load(open("/mnt/b_4960/Data/imdb/title.basics.tsv/indexes.pkl", "rb"))
+  teamsVecs = pickle.load(open("/mnt/b_4960/Data/imdb/title.basics.tsv/teams.pkl", "rb"))
   for team in teamsVecs: # movieID to bundle .. that is movie.id
     ## print(str(team.id) + " is a bundle. The title is: " + team.o_title)
-    # db.insertMovie(team.id, team.o_title)
+    db.insertMovie(team.id, team.o_title)
     for item in team.members: # team members are "items" # in imdb, they have a trailing .0 that I want to remove using int.
       itemId = int(item.id)
       ## print(" has team member " + item.name + " id("+str(itemId)+")")
-      # db.insertMember(itemId, item.name)
-      # db.insertMovieMember(team.id, itemId)
+      db.insertMember(itemId, item.name)
+      db.insertMovieMember(team.id, itemId)
       for skill in (team.genres+',').split(',')[:-1]: # genres are skills aka "user"... I will add a trailing , then remove the empty element to guarantee this is a list.
         genreIndex = str(indexes['s2i'][skill])
         ## print("  with skill " + skill + " id: " + genreIndex)
-        # db.insertGenre(genreIndex, skill)
-        # db.insertGenreMember(genreIndex, itemId)
-        # db.insertGenreMovie(genreIndex, team.id)
-        db.insertMovieGenreMember(team.id, genreIndex, itemId)
+        db.insertGenre(genreIndex, skill)
+        db.insertGenreMember(genreIndex, itemId)
+        db.insertGenreMovie(genreIndex, team.id)
   
 
 if __name__ == "__main__":    

@@ -62,7 +62,7 @@ def main():
     ## print(str(team.id) + " is a bundle. The title is: " + team.o_title)
     # db.insertMovie(team.id, team.o_title)
     for item in team.members: # team members are "items" # in imdb, they have a trailing .0 that I want to remove using int.
-      itemId = int(item.id)
+      itemId = str(item.id) + '_' + item.name
       ## print(" has team member " + item.name + " id("+str(itemId)+")")
       # db.insertMember(itemId, item.name)
       # db.insertMovieMember(team.id, itemId)
@@ -72,7 +72,7 @@ def main():
         # db.insertGenre(genreIndex, skill)
         # db.insertGenreMember(genreIndex, itemId)
         # db.insertGenreMovie(genreIndex, team.id)
-        db.insertMovieGenreMember(team.id, genreIndex, itemId)
+        db.insertMovieGenreMember(indexes['t2i'][team.id], genreIndex, indexes['c2i'][itemId])
   
 
 if __name__ == "__main__":    
