@@ -43,12 +43,15 @@ def main():
     bundle_train_data, bundle_eval_data, item_data, assist_data = \
             dataset.get_dataset(CONFIG['path'], CONFIG['dataset_name'], task=CONFIG['task'])
 
-    train_loader = DataLoader(bundle_train_data, 65536, True,
-                              num_workers=16, pin_memory=True)
-    eval_loader = DataLoader(bundle_eval_data, 4096, False,
-                             num_workers=16, pin_memory=True)
-    test_loader = DataLoader(bundle_test_data, 4096, False,
-                             num_workers=16, pin_memory=True)
+    # Batch size was 65536, workers was 16
+    train_loader = DataLoader(bundle_train_data, 1, True,
+                              num_workers=1, pin_memory=True)
+    # Batch size was 4096, workers was 16
+    eval_loader = DataLoader(bundle_eval_data, 1, False,
+                             num_workers=1, pin_memory=True)
+    # Batch size was 4096, workers was 16
+    test_loader = DataLoader(bundle_test_data, 1, False,
+                             num_workers=1, pin_memory=True)
 
     #  pretrain
     if 'pretrain' in CONFIG:
@@ -92,7 +95,7 @@ def main():
         print('MIDGN model')
         graph = [ub_graph, ui_graph, bi_graph]
         info = MIDGN_Info(64, decay, message_dropout, node_dropout, 2)
-        model =MIDGN(info, assist_data, graph, device, pretrain=None).to(device)
+        model = MIDGN(info, assist_data, graph, device, pretrain=None).to(device)
     
         assert model.__class__.__name__ == CONFIG['model']
 
@@ -123,6 +126,7 @@ def main():
                 early = CONFIG['early']
                 train_writer = SummaryWriter(log_dir=visual_path, comment='train')
                 eval_writer = SummaryWriter(log_dir=visual_path, comment='eval')
+                print(CONFIG)
                 for epoch in range(CONFIG['epochs']):
                     # train
                     trainloss = train(model, epoch+1, train_loader, op, device, CONFIG, loss_func)
