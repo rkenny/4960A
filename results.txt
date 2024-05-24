@@ -1,0 +1,24 @@
+BGCN
+  uspt: @20:0.0007265
+  imdb: @20:7.296763188033192e-05
+  dblp: @20:0.0002325986
+  gith: quiet fail?
+  
+BundleGT
+  uspt: OOM
+  imdb: 0.0000
+  dblp: ? OOM trying to display results
+  gith: 0.0000
+  
+MIDGN
+  uspt: OOM
+  imdb: OOM
+  dblp: OOM
+  gith: OOM
+  
+CrossCBR
+  uspt: Top20: 0.002276
+  imdb: Top20: 0.00003
+  dblp: Top20: 0.000943
+  gith: Top20: 0.00000
+  
