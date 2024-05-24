@@ -9,7 +9,7 @@ CONFIG = {
     'gpu_id': "0",
     'note': 'some_note',
     'model': 'BGCN',
-    'dataset_name': 'gith',
+    'dataset_name': 'imdb_toy',
     'task': 'tune',
     'eval_task': 'test',
 
@@ -33,7 +33,7 @@ CONFIG = {
     'conti_train': 'model_file_from_simple_sample.pth',
 
     ## other settings
-    'epochs': 1000,
+    'epochs': 25,
     'early': 50,
     'log_interval': 20,
     'test_interval': 1,

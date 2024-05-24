@@ -22,8 +22,10 @@ def test(model, loader, device, CONFIG, metrics):
         for users, ground_truth_u_b, train_mask_u_b in loader:
             pred_b = model.evaluate(rs, users.to(device))  
             pred_b -= 1e8*train_mask_u_b.to(device)
-            for metric in metrics:
+            for metric in metrics: # this is where i am having problems
+                # this is where i am having problems - rk 
                 metric(pred_b, ground_truth_u_b.to(device))
+
     print('Test: time={:d}s'.format(int(time()-start)))
     for metric in metrics:
         metric.stop()

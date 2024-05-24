@@ -13,9 +13,14 @@ def get_is_hit(scores, ground_truth, topk):
         return _is_hit_cache[topk]['is_hit']
     else:
         device = scores.device
+        try:
+          torch.topk(scores, topk)
+        except Exception as e:
+          print(e)
         _, col_indice = torch.topk(scores, topk)
         row_indice = torch.zeros_like(col_indice) + torch.arange(
             scores.shape[0], device=device, dtype=torch.long).view(-1, 1)
+
         is_hit = ground_truth[row_indice.view(-1),
                               col_indice.view(-1)].view(-1, topk)
         _is_hit_cache[topk] = {'id': cacheid, 'is_hit': is_hit}
@@ -73,11 +78,16 @@ class Recall(_Metric):
         return "Recall@{}".format(self.topk)
 
     def __call__(self, scores, ground_truth):
+#        print(scores)
+#        print(ground_truth)
+        print(self.topk)
         is_hit = get_is_hit(scores, ground_truth, self.topk)
         is_hit = is_hit.sum(dim=1)
         num_pos = ground_truth.sum(dim=1)
         self._cnt += scores.shape[0] - (num_pos == 0).sum().item()
         self._sum += (is_hit/(num_pos+self.epison)).sum().item()
+        self.scores = scores # rk - added to get model for evaluation
+        self.ground_truth = ground_truth # rk - added to get ground truth for final evaluation
 
 class NDCG(_Metric):
     '''
