@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import scipy.sparse as sp 
-
+import pickle
 
 def cal_bpr_loss(pred):
     # pred: [bs, 1+neg_num]
@@ -51,7 +51,7 @@ class CrossCBR(nn.Module):
         self.conf = conf
         device = self.conf["device"]
         self.device = device
-
+        print(self.device)
         self.embedding_size = conf["embedding_size"]
         self.embed_L2_norm = conf["l2_reg"]
         self.num_users = conf["num_users"]
@@ -77,6 +77,10 @@ class CrossCBR(nn.Module):
 
         self.num_layers = self.conf["num_layers"]
         self.c_temp = self.conf["c_temp"]
+        
+        self.ground_truth_u_b = {} # rk - added to get all ground truths
+        self.pred_b = {} # rk - added to get all predictions
+
 
 
     def init_md_dropouts(self):
@@ -285,3 +289,26 @@ class CrossCBR(nn.Module):
 
         scores = torch.mm(users_feature_atom, bundles_feature_atom.t()) + torch.mm(users_feature_non_atom, bundles_feature_non_atom.t())
         return scores
+
+    def store_ground_truth(self, batch_i, ground_truth_u_b): # rk - i added this
+        self.ground_truth_u_b[batch_i] = ground_truth_u_b
+            
+    def store_pred(self, batch_i, pred_b): # rk - i added this
+        self.pred_b[batch_i] = pred_b
+        
+    def print_ground_truth(self):
+        for batch_i in self.ground_truth_u_b.keys():
+          print(self.ground_truth_u_b[batch_i])
+    def print_pred(self):
+        for batch_i in self.pred_b.keys():
+          print(self.pred_b[batch_i])
+          
+    def save_ground_truth(self, dataset):
+        for batch_i in self.ground_truth_u_b.keys():
+            with open('/mnt/4960/4960_git/Outputs/CrossCBR/'+dataset+'.ground_truth.pickle', 'wb') as pickleFile:
+                pickle.dump(self.ground_truth_u_b[batch_i], pickleFile, protocol=pickle.HIGHEST_PROTOCOL)
+          
+    def save_pred(self, dataset):
+        for batch_i in self.pred_b.keys():
+            with open('/mnt/4960/4960_git/Outputs/CrossCBR/'+dataset+'.pred.pickle', 'wb') as pickleFile:
+                pickle.dump(self.pred_b[batch_i], pickleFile, protocol=pickle.HIGHEST_PROTOCOL)

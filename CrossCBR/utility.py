@@ -123,7 +123,8 @@ class Datasets():
         b_b_from_i = b_b_from_i.todense()
         bn2_window = [int(i*self.num_bundles) for i in conf['hard_window']]
         b_b_for_neg_sample = np.argsort(b_b_from_i, axis=1)[:, bn2_window[0]:bn2_window[1]]
-
+        u_b_for_neg_sample.to('cuda:0') ####
+        b_b_for_neg_sample.to('cuda:0') ####
         return u_b_for_neg_sample, b_b_for_neg_sample
 
 
@@ -137,7 +138,7 @@ class Datasets():
             (values, (indice[:, 0], indice[:, 1])), shape=(self.num_bundles, self.num_items)).tocsr()
 
         print_statistics(b_i_graph, 'B-I statistics')
-
+        # b_i_graph.to('cuda:0')
         return b_i_graph
 
 
@@ -151,7 +152,8 @@ class Datasets():
             (values, (indice[:, 0], indice[:, 1])), shape=(self.num_users, self.num_items)).tocsr()
 
         print_statistics(u_i_graph, 'U-I statistics')
-
+        # u_i_pairs.to('cuda:0')
+        # u_i_graph.to('cuda:0')
         return u_i_pairs, u_i_graph
 
 
@@ -165,5 +167,6 @@ class Datasets():
             (values, (indice[:, 0], indice[:, 1])), shape=(self.num_users, self.num_bundles)).tocsr()
 
         print_statistics(u_b_graph, "U-B statistics in %s" %(task))
-
+        # u_b_pairs.to('cuda:0')
+        # u_b_graph.to('cuda:0')
         return u_b_pairs, u_b_graph
