@@ -53,7 +53,8 @@ def main():
     conf["num_items"] = dataset.num_items
 
     os.environ['CUDA_VISIBLE_DEVICES'] = conf["gpu"]
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     conf["device"] = device
     print(conf)
 
@@ -149,12 +150,9 @@ def main():
 
                 if (batch_anchor+1) % test_interval_bs == 0:  
                     metrics = {}
-                    metrics["val"] = test(model, dataset.val_loader, conf, batch_i, True)
-                    metrics["test"] = test(model, dataset.test_loader, conf, batch_i, False)
+                    metrics["val"] = test(model, dataset.val_loader, conf)
+                    metrics["test"] = test(model, dataset.test_loader, conf)
                     best_metrics, best_perform, best_epoch = log_metrics(conf, model, metrics, run, log_path, checkpoint_model_path, checkpoint_conf_path, epoch, batch_anchor, best_metrics, best_perform, best_epoch)
-    model.save_ground_truth(conf["dataset"]) # rk - get the scores here
-    model.save_pred(conf["dataset"]) # rk - get the scores here
-    input("press enter to continue.") # rk - this is just to pause before exit
 
 
 def init_best_metrics(conf):
@@ -229,7 +227,7 @@ def log_metrics(conf, model, metrics, run, log_path, checkpoint_model_path, chec
     return best_metrics, best_perform, best_epoch
 
 
-def test(model, dataloader, conf, batch_i, keep=False): # rk - updated from test(model, dataloader, conf):
+def test(model, dataloader, conf):
     tmp_metrics = {}
     for m in ["recall", "ndcg"]:
         tmp_metrics[m] = {}
@@ -243,17 +241,13 @@ def test(model, dataloader, conf, batch_i, keep=False): # rk - updated from test
         pred_b = model.evaluate(rs, users.to(device))
         pred_b -= 1e8 * train_mask_u_b.to(device)
         tmp_metrics = get_metrics(tmp_metrics, ground_truth_u_b, pred_b, conf["topk"])
-        if keep:  # rk - added this section
-          model.store_ground_truth(batch_i, ground_truth_u_b)  # rk - added this section
-          model.store_pred(batch_i, pred_b)  # rk - added this section
-        
+
     metrics = {}
     for m, topk_res in tmp_metrics.items():
         metrics[m] = {}
         for topk, res in topk_res.items():
             metrics[m][topk] = res[0] / res[1]
-    # print(metrics.keys()) # rk - i added this
-    # input("### press enter to continue") # rk - i added this
+
     return metrics
 
 
@@ -262,11 +256,12 @@ def get_metrics(metrics, grd, pred, topks):
     for topk in topks:
         _, col_indice = torch.topk(pred, topk)
         row_indice = torch.zeros_like(col_indice) + torch.arange(pred.shape[0], device=pred.device, dtype=torch.long).view(-1, 1)
-        yep = grd.to(torch.device('cuda:0'))
-        is_hit = yep[row_indice.view(-1), col_indice.view(-1)].view(-1, topk)
-        is_hit2 = is_hit.to(torch.device('cuda:0'))
-        tmp["recall"][topk] = get_recall(pred, yep, is_hit2, topk)
-        tmp["ndcg"][topk] = get_ndcg(pred, yep, is_hit2, topk)
+        # row_indice = torch.zeros_like(col_indice) + torch.arange(pred.shape[0], dtype=torch.long).view(-1, 1)
+        new_gd = grd[row_indice.view(-1), col_indice.view(-1)]
+        is_hit = new_gd.view(-1, topk)
+
+        tmp["recall"][topk] = get_recall(pred, grd, is_hit, topk)
+        tmp["ndcg"][topk] = get_ndcg(pred, grd, is_hit, topk)
 
     for m, topk_res in tmp.items():
         for topk, res in topk_res.items():
@@ -290,9 +285,8 @@ def get_recall(pred, grd, is_hit, topk):
 
 def get_ndcg(pred, grd, is_hit, topk):
     def DCG(hit, topk, device):
-        hit2 = hit.to(torch.device('cuda:0'))
-        hit2 = hit2/torch.log2(torch.arange(2, topk+2, device=device, dtype=torch.float))
-        return hit2.sum(-1)
+        hit = hit/torch.log2(torch.arange(2, topk+2, device=device, dtype=torch.float))
+        return hit.sum(-1)
 
     def IDCG(num_pos, topk, device):
         hit = torch.zeros(topk, dtype=torch.float)
@@ -307,8 +301,8 @@ def get_ndcg(pred, grd, is_hit, topk):
 
     num_pos = grd.sum(dim=1).clamp(0, topk).to(torch.long)
     dcg = DCG(is_hit, topk, device)
-    IDCGst = IDCGs.to(device)
-    idcg = IDCGst[num_pos]
+
+    idcg = IDCGs[num_pos]
     ndcg = dcg/idcg.to(device)
 
     denorm = pred.shape[0] - (num_pos == 0).sum().item()

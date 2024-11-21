@@ -21,6 +21,8 @@ from itertools import product
 import time
 from tensorboardX import SummaryWriter
 
+import pickle
+
 def main():
     #  set env
     setproctitle.setproctitle(f"train{CONFIG['name']}")
@@ -44,14 +46,11 @@ def main():
             dataset.get_dataset(CONFIG['path'], CONFIG['dataset_name'], task=CONFIG['task'])
 
     # Batch size was 65536, workers was 16
-    train_loader = DataLoader(bundle_train_data, 1, True,
-                              num_workers=1, pin_memory=True)
+    train_loader = DataLoader(bundle_train_data, 10000, True, num_workers=2, pin_memory=True)
     # Batch size was 4096, workers was 16
-    eval_loader = DataLoader(bundle_eval_data, 1, False,
-                             num_workers=1, pin_memory=True)
+    eval_loader = DataLoader(bundle_eval_data, 6000, False, num_workers=2, pin_memory=True)
     # Batch size was 4096, workers was 16
-    test_loader = DataLoader(bundle_test_data, 1, False,
-                             num_workers=1, pin_memory=True)
+    test_loader = DataLoader(bundle_test_data, 4550, False, num_workers=2, pin_memory=True)
 
     #  pretrain
     if 'pretrain' in CONFIG:
@@ -80,7 +79,6 @@ def main():
     theta = 0.6
 
     time_path = time.strftime("%y%m%d-%H%M%S", time.localtime(time.time()))
-
     for lr, decay, message_dropout, node_dropout \
             in product(CONFIG['lrs'], CONFIG['decays'], CONFIG['message_dropouts'], CONFIG['node_dropouts']):
 
@@ -91,12 +89,10 @@ def main():
                                     f"lr{lr}_decay{decay}_medr{message_dropout}_nodr{node_dropout}")
 
         # model
-       
         print('MIDGN model')
         graph = [ub_graph, ui_graph, bi_graph]
         info = MIDGN_Info(64, decay, message_dropout, node_dropout, 2)
         model = MIDGN(info, assist_data, graph, device, pretrain=None).to(device)
-    
         assert model.__class__.__name__ == CONFIG['model']
 
         # op
@@ -117,8 +113,7 @@ def main():
         retry = CONFIG['retry']  # =1
         while retry >= 0:
             # log
-            log.update_modelinfo(info,
-                                 env, metrics)
+            log.update_modelinfo(info, env, metrics)
             #try:
             if retry >=0:
 
@@ -134,12 +129,12 @@ def main():
 
                     # test
                     if epoch % CONFIG['test_interval'] == 0:
-                        output_metrics = test(model, eval_loader, device, CONFIG, metrics)
+                        # output_metrics = test(model, eval_loader, device, CONFIG, metrics)
                         test_metrics = test(model, test_loader, device, CONFIG, test_metrics)
-                        for metric in output_metrics:
-                            eval_writer.add_scalars('metric/all', {metric.get_title(): metric.metric}, epoch)
-                            if metric==output_metrics[0]:
-                                eval_writer.add_scalars('metric/single', {metric.get_title(): metric.metric}, epoch)
+                        # for metric in output_metrics:
+                        #    eval_writer.add_scalars('metric/all', {metric.get_title(): metric.metric}, epoch)
+                        #    if metric==output_metrics[0]:
+                        #        eval_writer.add_scalars('metric/single', {metric.get_title(): metric.metric}, epoch)
 
                         # log
                         log.update_log(metrics, model)
@@ -160,7 +155,15 @@ def main():
             # except RuntimeError:
             #    retry -= 1
     log.close()
+    print("log closed")
 
+    for (metric, i) in zip(test_metrics, range(0, len(test_metrics))):
+      with open('/home/kennyr/projects/def-hfani/kennyr/Outputs/MIDGN/'+CONFIG['dataset_name']+metric.get_title()+'.pred.pickle', 'wb') as outputFile:
+        pickle.dump(metric.saved_pred, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
+      with open('/home/kennyr/projects/def-hfani/kennyr/Outputs/MIDGN/'+CONFIG['dataset_name']+metric.get_title()+'.ground_truth.pickle', 'wb') as outputFile:
+        pickle.dump(metric.saved_ground_truth, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
+      
+    # input("press enter to continue")
 
 if __name__ == "__main__":
     main()

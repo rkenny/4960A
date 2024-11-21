@@ -191,8 +191,9 @@ def main():
             # print("main py 192: batch_anchor is " + str(batch_anchor) + " test_interval_bs is " + str(test_interval_bs) + " and (batch_anchor+1) % test_interval_bs == 0 is " + str((batch_anchor+1) % test_interval_bs == 0))
             if (batch_anchor+1) % test_interval_bs == 0:  
                 metrics = {}
-                metrics["val"] = test(model, dataset.val_loader, conf, batch_i, True) # rk - updated to keep results
-                metrics["test"] = test(model, dataset.test_loader, conf, batch_i, False) # rk - updated to keep results
+                metrics["val"] = test(model, dataset.val_loader, conf, batch_i, False) # rk - updated to keep results
+                metrics["test"] = test(model, dataset.test_loader, conf, batch_i, True) # rk - updated to keep results
+                print(metrics["test"])
                 best_metrics, best_perform, best_epoch = log_metrics(conf, model, metrics, log_path, checkpoint_model_path, checkpoint_conf_path, epoch, batch_anchor, best_metrics, best_perform, best_epoch)
         # test(model, dataset.val_loader, conf) # just for the call?       
         if conf['early_stopping'] > 0 and (epoch - best_epoch) >= conf['early_stopping']:
@@ -207,11 +208,12 @@ def main():
                                                         , time.time() - s_time)
             avg_loss = []
             f.write(loss_str)
-            print(loss_str)
+            # print(loss_str)
+    # for metric in metrics:
+    #  print(metrics[metric])
     model.save_ground_truth(conf["dataset"]) # rk - get the scores here
     model.save_pred(conf["dataset"]) # rk - get the scores here
-    
-    input("press enter to continue.") # rk - this is just to pause before exit
+
 def init_best_metrics(conf):
     best_metrics = {}
     best_metrics["val"] = {}
@@ -306,6 +308,7 @@ def test(model, dataloader, conf, batch_i, keep=False): # rk - updated from test
         e_time = time.time() - s_time
         pred_b = pred_b - 1e8 * train_mask_u_b
         tmp_metrics = get_metrics(tmp_metrics, ground_truth_u_b, pred_b, conf["topk"])
+        
         d_time = time.time()-  s_time
         t_bar.set_description("e_time: %.5f d_time: %.5f" %(e_time, d_time))
         if keep: # rk - added this section
@@ -376,7 +379,6 @@ def get_ndcg(pred, grd, is_hit, topk):
 
     denorm = pred.shape[0] - (num_pos == 0).sum().item()
     nomina = ndcg.sum().item()
-
     return [nomina, denorm]
 
 

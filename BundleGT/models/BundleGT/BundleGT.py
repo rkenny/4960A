@@ -115,16 +115,7 @@ class BundleGT(nn.Module):
         users_feature, _, bundles_feature = propagate_result
         users_embedding = users_feature[users]
         scores = torch.mm(users_embedding, bundles_feature.t())
-        ####print("BundleGT evaluate follows:")
-        # print(users_feature.item()) # 18,64
-        # print(bundles_feature.shape) # 18, 64
-        # help(users_feature)
         self.scores = scores # rk - added to get results
-        # input("whiskey?")
-        #### print(scores.shape)
-        ####print(scores.ndim)
-        ####print(scores)
-        #### print("BundleGT evaluate finished.")
         
         return scores
         
@@ -143,10 +134,11 @@ class BundleGT(nn.Module):
 
     def save_ground_truth(self, dataset):
         for batch_i in self.ground_truth_u_b.keys():
-            with open('/mnt/4960/4960_git/Outputs/BundleGT/'+dataset+'.ground_truth.pickle', 'wb') as pickleFile:
+            print(batch_i)
+            with open('/home/kennyr/projects/def-hfani/kennyr/Outputs/BundleGT/'+dataset+'.ground_truth.pickle', 'wb') as pickleFile:
                 pickle.dump(self.ground_truth_u_b[batch_i], pickleFile, protocol=pickle.HIGHEST_PROTOCOL)
           
     def save_pred(self, dataset):
         for batch_i in self.pred_b.keys():
-            with open('/mnt/4960/4960_git/Outputs/BundleGT/'+dataset+'.pred.pickle', 'wb') as pickleFile:
+            with open('/home/kennyr/projects/def-hfani/kennyr/Outputs/BundleGT/'+dataset+'.pred.pickle', 'wb') as pickleFile:
                 pickle.dump(self.pred_b[batch_i], pickleFile, protocol=pickle.HIGHEST_PROTOCOL)

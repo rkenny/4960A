@@ -20,10 +20,13 @@ def test(model, loader, device, CONFIG, metrics):
     with torch.no_grad():
         rs = model.propagate() 
         for users, ground_truth_u_b, train_mask_u_b in loader:
-            pred_b = model.evaluate(rs, users.to(device))  
+            pred_b = model.evaluate(rs, users.to(device))
+            unmasked = pred_b
             pred_b -= 1e8*train_mask_u_b.to(device)
             for metric in metrics:
                 metric(pred_b, ground_truth_u_b.to(device))
+                metric.save_pred(unmasked)
+                metric.save_ground_truth(ground_truth_u_b)
     print('Test: time={:d}s'.format(int(time()-start)))
     for metric in metrics:
         metric.stop()

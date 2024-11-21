@@ -27,6 +27,12 @@ class _Metric:
     base class of metrics like Recall@k NDCG@k MRR@k
     '''
 
+    def save_pred(self, pred):
+        self.saved_pred = pred
+
+    def save_ground_truth(self, ground_truth):
+        self.saved_ground_truth = ground_truth
+
     def __init__(self):
         self.start()
 
@@ -78,6 +84,9 @@ class Recall(_Metric):
         num_pos = ground_truth.sum(dim=1)
         self._cnt += scores.shape[0] - (num_pos == 0).sum().item()
         self._sum += (is_hit/(num_pos+self.epison)).sum().item()
+        self.scores = scores # rk - added to get model for evaluation
+        self.ground_truth = ground_truth # rk - added to get ground truth for final evaluation
+
 
 class Precision(_Metric):
     '''
@@ -98,6 +107,9 @@ class Precision(_Metric):
         num_pos = ground_truth.sum(dim=1)
         self._cnt += scores.shape[0] - (num_pos == 0).sum().item()
         self._sum += (is_hit/(self.topk+self.epison)).sum().item()
+        self.scores = scores # rk - added to get model for evaluation
+        self.ground_truth = ground_truth # rk - added to get ground truth for final evaluation
+
 
 class NDCG(_Metric):
     '''
@@ -137,6 +149,9 @@ class NDCG(_Metric):
         ndcg = dcg/idcg.to(device)
         self._cnt += scores.shape[0] - (num_pos == 0).sum().item()
         self._sum += ndcg.sum().item()
+        self.scores = scores # rk - added to get model for evaluation
+        self.ground_truth = ground_truth # rk - added to get ground truth for final evaluation
+
 
 
 
@@ -161,3 +176,6 @@ class MRR(_Metric):
         num_pos = ground_truth.sum(dim=1)
         self._cnt += scores.shape[0] - (num_pos == 0).sum().item()
         self._sum += first_hit_rr.sum().item()
+        self.scores = scores # rk - added to get model for evaluation
+        self.ground_truth = ground_truth # rk - added to get ground truth for final evaluation
+

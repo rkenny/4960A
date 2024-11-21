@@ -43,11 +43,11 @@ def main():
     bundle_train_data, bundle_test_data, item_data, assist_data = \
             dataset.get_dataset(CONFIG['path'], CONFIG['dataset_name'], task=CONFIG['task'])
     # Batch was 2048
-    train_loader = DataLoader(bundle_train_data, 256, True,
-                              num_workers=2, pin_memory=True)
+    train_loader = DataLoader(bundle_train_data, 8096, True,
+                              num_workers=16, pin_memory=True)
     # Batch was 4096
-    test_loader = DataLoader(bundle_test_data, 256, False,
-                             num_workers=2, pin_memory=True)
+    test_loader = DataLoader(bundle_test_data, 8096, False,
+                             num_workers=16, pin_memory=True)
 
     #  pretrain
     if 'pretrain' in CONFIG:
@@ -60,7 +60,7 @@ def main():
     bi_graph = assist_data.ground_truth_b_i
 
     #  metric
-    # metrics = [Recall(1), NDCG(1), Recall(1), NDCG(1), Recall(1), NDCG(1)]
+    # metrics = [Recall(1), NDCG(1), Recall(10), NDCG(10), Recall(20), NDCG(20)]
     metrics = [Recall(20)]
     TARGET = 'Recall@20'
 
@@ -118,29 +118,27 @@ def main():
                 early = CONFIG['early']  
                 train_writer = SummaryWriter(log_dir=visual_path, comment='train')
                 test_writer = SummaryWriter(log_dir=visual_path, comment='test')
-                print(CONFIG['epochs']) 
                 for epoch in range(CONFIG['epochs']):
                     # train
-                    print("i got to there")
                     trainloss = train(model, epoch+1, train_loader, op, device, CONFIG, loss_func)
                     print("I got past train")
                     train_writer.add_scalars('loss/single', {"loss": trainloss}, epoch)
-                    print("i got past there")
+                    print("i got past train_writer")
                     # test
-                    print(epoch)
-                    print(CONFIG['test_interval'])
+                    print("Epoch is " + str(epoch))
+                    print("Test interval is " + str (CONFIG['test_interval']))
+                    print(epoch % CONFIG['test_interval'])
                     if epoch % CONFIG['test_interval'] == 0: 
                         output_metrics = test(model, test_loader, device, CONFIG, metrics)
-                        print("i got to here")
+                        print("argh")
                         for metric in output_metrics:
                             test_writer.add_scalars('metric/all', {metric.get_title(): metric.metric}, epoch)
-                            print(test_writer)
+                            # print(test_writer)
                             if metric==output_metrics[0]:
                                 test_writer.add_scalars('metric/single', {metric.get_title(): metric.metric}, epoch)
 
                         # log
                         log.update_log(metrics, model)
-                        print("log updated") 
 
                         # check overfitting
                         if epoch > 10:
@@ -158,14 +156,21 @@ def main():
 
                 log.close_log(TARGET)
                 retry = -1
-            except RuntimeError:
+            except RuntimeError as e:
+                print(e)
                 retry -= 1
     log.close()
-    print("log closed")
-    with open('/mnt/4960/4960_git/Outputs/BGCN/'+CONFIG['dataset_name']+'.pred.pickle', 'wb') as outputFile:
-      pickle.dump(metric.scores, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
-    with open('/mnt/4960/4960_git/Outputs/BGCN/'+CONFIG['dataset_name']+'.ground_truth.pickle', 'wb') as outputFile:
-      pickle.dump(metric.ground_truth, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
+    
+    for (metric, i) in zip(output_metrics, range(0, len(output_metrics))):
+      with open('/home/kennyr/projects/def-hfani/kennyr/Outputs/BGCN/'+CONFIG['dataset_name']+metric.get_title()+'.pred.pickle', 'wb') as outputFile:
+        pickle.dump(metric.scores, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
+      with open('/home/kennyr/projects/def-hfani/kennyr/Outputs/BGCN/'+CONFIG['dataset_name']+metric.get_title()+'.ground_truth.pickle', 'wb') as outputFile:
+        pickle.dump(metric.ground_truth, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
+
+    #with open('/mnt/4960/4960_git/Outputs/BGCN/'+CONFIG['dataset_name']+'.pred.pickle', 'wb') as outputFile:
+    #  pickle.dump(metric.scores, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
+    #with open('/mnt/4960/4960_git/Outputs/BGCN/'+CONFIG['dataset_name']+'.ground_truth.pickle', 'wb') as outputFile:
+    #  pickle.dump(metric.ground_truth, outputFile, protocol=pickle.HIGHEST_PROTOCOL)
     # input("press enter to continue")
 
 

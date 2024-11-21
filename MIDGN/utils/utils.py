@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 from math import ceil
 
@@ -11,14 +11,14 @@ def show(metrics_log):
     i = 1
     columns = 2
     rows = ceil(len(metrics_log)/columns)
-    for k, v in metrics_log.items():
-        plt.subplot(rows, columns, i)
-        plt.plot(x, v, '.-')
-        plt.title('{} vs epochs'.format(k))
-        i += 1
-    plt.subplots_adjust(wspace=0, hspace=0)
-    plt.tight_layout()
-    plt.show()
+    # for k, v in metrics_log.items():
+    #     plt.subplot(rows, columns, i)
+    #    plt.plot(x, v, '.-')
+    #    plt.title('{} vs epochs'.format(k))
+    #    i += 1
+    #plt.subplots_adjust(wspace=0, hspace=0)
+    #plt.tight_layout()
+    #plt.show()
 
 
 def get_perf(metrics_log, window_size, target, show=True):

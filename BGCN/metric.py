@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/python3
 import torch
 import numpy as np
 
