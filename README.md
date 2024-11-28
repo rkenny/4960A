@@ -2,8 +2,11 @@ Research into the applicability of several ML algorithms for OpeNTF.
 They are:
 
 BCGN (https://github.com/cjx0525/BGCN)
-BundleGT (https://github.com/Xiaohao-Liu/BundleGT0
+
+BundleGT (https://github.com/Xiaohao-Liu/BundleGT)
+
 CrossCBR (https://github.com/mysbupt/CrossCBR/)
+
 MIDGN (https://github.com/Snnzhao/MIDGN.git)
 
 Code Structure:
